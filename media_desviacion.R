@@ -12,30 +12,17 @@ mi_media2 <- function(num){
 
 # ejercicio desviacion estandar
 desv_estandar <- function(x){
-  sqrt(sum((x - mean(x)) ^ 2))
+  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
 }
-
-numeros <- c(10, 20, 30)
 
 desv_estandar2 <- function(x){
   media <- mean(x)
+  n <- length(x) 
   resta <- x - media
-  cuadrado <- x ^ 2
+  cuadrado <- resta ^ 2
   suma <- sum(cuadrado)
+  div <- suma / (n - 1)
   resultado <- sqrt(suma)
   return(resultado)
 }
 
-nombre <- "Alex"
-apellido <- "Ojeda"
-x <- "X"
-
-# resultado final "Alex Ojeda X"
-res <- paste(nombre, apellido) # Alex Ojeda
-res2 <- paste(res, x)
-# otra forma
-str_to_upper(paste(paste(nombre, apellido), x))
-# con tuberias
-paste(nombre, apellido) %>%
-  paste(x) %>%
-  str_to_upper()
