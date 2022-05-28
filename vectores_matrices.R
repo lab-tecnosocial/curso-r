@@ -1,0 +1,32 @@
+# Ejemplo de creación de vectores
+notas_algebra <- c(40, 50, 60) # numerico: entero
+notas_historia <- c(90.5, 99.8, 90.1) # numerico: decimal
+top_materias <- c("Teoría de grafos", "Historia", "Estadistica") # caracteres
+
+# operaciones con vectores
+notas_algebra * 2
+notas_algebra + notas_historia
+sum(notas_algebra)
+mean(notas_algebra)
+sd(notas_algebra)
+
+# asignar nombres a los datos (vector nombrado)
+notas_algebra <- c("1P" = 40, "2P" = 50, "3P" = 60)
+
+# selección o subconjuntos (por indice o por nombre)
+notas_algebra[1]
+notas_algebra[3]
+notas_algebra[1:2]
+notas_algebra[c(1, 3)]
+notas_algebra["2P"]
+notas_algebra[c("1P", "3P")]
+
+# matrices
+numeros <- 1:12
+mi_matriz <- matrix(numeros, nrow = 4, ncol = 4)
+notas_general <- cbind(notas_algebra, notas_historia)
+
+# seleccion de matricez
+mi_matriz[2, 2]
+
+# matrices con nombres
