@@ -3,8 +3,10 @@ Funciones
 
 # Concepto
 
-Tipos: - Incorporadas (built-in) - paste(), print(), sum(), help() -
-Definidas por el usuario
+Tipos: 
+- Incorporadas (built-in) 
+  - paste(), print(), sum(), help() -
+- Definidas por el usuario
 
 Partes - Input - Proceso - Output
 

@@ -3,7 +3,7 @@ title: "Datos y variables"
 output: github_document
 ---
 
-# R como una calculadora
+## R como una calculadora
 
 Inicialmente, puedes usar R como una calculadora.Puedes usar varias operaciones aritméticas, incluidas la adición, sustracción, multiplicación, división, exponenciación y modulo:
 
@@ -14,7 +14,7 @@ Inicialmente, puedes usar R como una calculadora.Puedes usar varias operaciones 
 -   Exponenciación:`^`
 -   Modulo:`%%`
 
-# Variables
+## Variables
 
 Una variable permite almacenar un valor o un objeto. Luego se puede usar el nombre de la variable para acceder al valor u objeto almacenado, usarlo o combinarlo. Para ello se debe usar el operador de asignación:
 
@@ -31,7 +31,7 @@ print(mis_frutas)
 
 Demostración: promedio de materia
 
-# Tipos de datos
+## Tipos de datos
 
 Son los tipos de valores que pueden soportar las variables. Existen:
 
