@@ -7,6 +7,8 @@ library(tidyverse)
 # cargar
 data <- read_csv("data/gapminder.csv")
 
+# Verbos de manipulación: filter(), arrange(), mutate() -----
+
 # Filtrar filter()
 data %>%
   filter(country == "Bolivia", lifeExp < 50)
@@ -22,7 +24,8 @@ bolivia <- data %>%
   filter(country == "Bolivia")
 
 bolivia <- bolivia %>%
-  mutate(gpdMes = gdpPercap * 12)
+  mutate(lifeExpMes = lifeExp * 12) %>%
+  mutate(popMillon = pop / 1000000)
 
 # Con Peru
 data_peru <- data %>%
