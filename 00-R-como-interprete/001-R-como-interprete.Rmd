@@ -20,14 +20,15 @@ Hay dos tipos de instrucciones que puedes darle: declaraciones y expresiones.
 
 ## Declaraciones (_statements_)
 Las declaraciones son instrucciones de acción simples que se ejecutan de inmediato:
+
 - Asigna este dato a este nombre
 - Suma estos dos números
+
 Hacen uso de funciones prefijas como `sum()` y funciones infijas, también conocidos como operadores, como `<-`, `+`.
 
 ## Expresiones (_expressions_)
 Las expresiones son una combinación compleja de declaraciones, funciones, variables y datos que se evaluan a un valor usable, por ejemplo:
-
-```rm
+```{rm eval = F}
 sum(primer_parcial * 1, segundo_parcial * 2, tercer_parcial * 3) / sum(1:3)
 ```
 

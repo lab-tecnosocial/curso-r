@@ -2,7 +2,7 @@
 title: "Funciones"
 output: github_document
 ---
-# Concepto
+## Concepto
 
 Tipos:
 -   Incorporadas (built-in)
@@ -19,7 +19,7 @@ Creación y llamadas
 -   Empaquetar pasos o acciones. Se deben pensar en los argumentos de antemano.
 -   Resuelve un problema particular, un problema bien definido. Principio de la caja negra.
 
-# Sintaxis
+## Sintaxis
 
 ```{r, eval=F}
 my_fun <- function(arg1, arg2) {
@@ -38,7 +38,7 @@ potencia_dos(12)
 
 ```
 
-# Argumentos
+## Argumentos
 -   R puede emparejar argumentos **por posición** y **por nombre**
 -   Puede haber argumentos **por defecto**, lo que facilita su aplicación. Pero a veces hay que ingresar. Argumentos requeridos vs. opcionales
 
