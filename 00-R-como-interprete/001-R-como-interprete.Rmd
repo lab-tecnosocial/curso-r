@@ -1,6 +1,8 @@
 ---
 title: "R como un interprete"
-output: github_document
+output: 
+  github_document:
+    html_preview: false
 ---
 
 ## ¿Qué es R?
@@ -27,7 +29,7 @@ Las declaraciones son instrucciones de acción simples que se ejecutan de inmedi
 
 ## Expresiones (_expressions_)
 Las expresiones son una combinación compleja de declaraciones, funciones, variables y datos que se evaluan a un valor usable, por ejemplo:
-```{rm, eval = F}
+```{r, eval = F}
 resultado <- sum(primer_parcial * 1, segundo_parcial * 2, tercer_parcial * 3) / sum(1:3)
 ```
 

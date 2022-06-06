@@ -41,7 +41,7 @@ Las expresiones son una combinación compleja de declaraciones,
 funciones, variables y datos que se evaluan a un valor usable, por
 ejemplo:
 
-``` rm
+``` r
 resultado <- sum(primer_parcial * 1, segundo_parcial * 2, tercer_parcial * 3) / sum(1:3)
 ```
 
