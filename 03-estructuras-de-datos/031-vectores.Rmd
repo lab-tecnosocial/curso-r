@@ -1,11 +1,11 @@
 ---
-title: "Vectores y matrices"
+title: "Vectores"
 output: 
   github_document:
     html_preview: false
 ---
 
-## Vectores
+## Concepto
 
 Las variables que hemos definido hasta ahora solo han poseido un valor único. Pero muchas veces necesitamos almacenar una colección o serie de valores relacionadas.
 
@@ -23,7 +23,7 @@ top_materias <- c("Teoría de grafos", "Historia", "Estadistica") # texto o cara
 aprobacion_algebra <- c(FALSE, TRUE, FALSE) # logicos
 ```
 
-### Operaciones
+## Operaciones
 
 Las operaciones con los vectores son especiales:
 
@@ -40,7 +40,7 @@ mean(notas_algebra) # media
 sd(notas_algebra)   # desviación estandar
 
 ```
-### Selección de elementos de vectores (subconjuntos)
+## Selección de elementos de vectores (subconjuntos)
 
 Para poder seleccionar los elementos de los vectores es importante primero entender cómo están almacenados, como ejemplo usemos el vector `notas_algebra`:
 
@@ -104,21 +104,3 @@ mi_vector == 10 | mi_vector == 20
 mi_vector[mi_vector > 10]
 
 ```
-
-
-## Matrices
-
-Sirven para almacenar datos de un solo tipo que tienen dos dimensiones, estilo tablas.
-
-Se las crea con la función `matrix()` o vinculando dos o más vectores por columna (`cbind()`) o fila (`rbind()`):
-```{r}
-# matrices
-numeros <- 1:12
-mi_matriz <- matrix(numeros, nrow = 3, ncol = 4)
-notas_general <- cbind(notas_algebra, notas_historia)
-
-# seleccion de matricez
-mi_matriz[2, 2]
-```
-
-Tienen operaciones y modos de selección similares a los vectores.

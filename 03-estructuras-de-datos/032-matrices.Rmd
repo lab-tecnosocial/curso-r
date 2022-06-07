@@ -1,0 +1,21 @@
+---
+title: "Matrices"
+output: 
+  github_document:
+    html_preview: false
+---
+## Concepto
+Sirven para almacenar datos de un solo tipo que tienen dos dimensiones, estilo tablas.
+
+Se las crea con la función `matrix()` o vinculando dos o más vectores por columna (`cbind()`) o fila (`rbind()`):
+```{r}
+# matrices
+numeros <- 1:12
+mi_matriz <- matrix(numeros, nrow = 3, ncol = 4)
+notas_general <- cbind(notas_algebra, notas_historia)
+
+# seleccion de matricez
+mi_matriz[2, 2]
+```
+
+Tienen operaciones y modos de selección similares a los vectores.

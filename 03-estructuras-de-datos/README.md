@@ -1,9 +1,9 @@
 
-# ./03-estructuras-de-datos
+# Estructuras de datos
 
-# Vectores y matrices
+# Vectores
 
-## Vectores
+## Concepto
 
 Las variables que hemos definido hasta ahora solo han poseido un valor
 único. Pero muchas veces necesitamos almacenar una colección o serie de
@@ -24,7 +24,7 @@ top_materias <- c("Teoría de grafos", "Historia", "Estadistica") # texto o cara
 aprobacion_algebra <- c(FALSE, TRUE, FALSE) # logicos
 ```
 
-### Operaciones
+## Operaciones
 
 Las operaciones con los vectores son especiales:
 
@@ -66,7 +66,7 @@ sd(notas_algebra)   # desviación estandar
 
     ## [1] 10
 
-### Selección de elementos de vectores (subconjuntos)
+## Selección de elementos de vectores (subconjuntos)
 
 Para poder seleccionar los elementos de los vectores es importante
 primero entender cómo están almacenados, como ejemplo usemos el vector
@@ -169,22 +169,19 @@ mi_vector <- 1:20
 mi_vector > 10
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-    ## [20]  TRUE
+    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 
 ``` r
 mi_vector >= 5 & mi_vector <= 15
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
-    ## [20] FALSE
+    ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
 
 ``` r
 mi_vector == 10 | mi_vector == 20
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [20]  TRUE
+    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
 
 ``` r
 # filtrar (pasamos la expresión dentro de los corchetes)
@@ -193,7 +190,9 @@ mi_vector[mi_vector > 10]
 
     ##  [1] 11 12 13 14 15 16 17 18 19 20
 
-## Matrices
+# Matrices
+
+## Concepto
 
 Sirven para almacenar datos de un solo tipo que tienen dos dimensiones,
 estilo tablas.
@@ -331,351 +330,7 @@ tabla <- data.frame(estudiantes, notas)
 tabla$aprobacion <- tabla$notas > 50
 ```
 
-# Vectores y matrices
-
-## Leer datos
-
-## Escribir datos
-
-# Listas
-
-## Concepto
-
-# 
-
-# ./03-estructuras-de-datos
-
-# Vectores y matrices
-
-## Vectores
-
-Las variables que hemos definido hasta ahora solo han poseido un valor
-único. Pero muchas veces necesitamos almacenar una colección o serie de
-valores relacionadas.
-
-Para eso están los vectores, que son una colección unidimensional de
-elementos del mismo tipo. Se los crea con la función:
-
-> `c()`
-
-que viene de `c`ombinar:
-
-``` r
-# Ejemplo de creación de vectores
-notas_algebra <- c(50, 70, 60) # numerico: entero
-notas_historia <- c(90.5, 99.8, 90.1) # numerico: decimal
-top_materias <- c("Teoría de grafos", "Historia", "Estadistica") # texto o caracteres
-aprobacion_algebra <- c(FALSE, TRUE, FALSE) # logicos
-```
-
-### Operaciones
-
-Las operaciones con los vectores son especiales:
-
--   Un valor único (escalar) contra un vector resulta en el valor siendo
-    aplicado varias a todos los elementos del vector
--   Si se opera un vector de la misma longitud contra otro vector, las
-    operaciones se hacen por parejas.
--   Si se pasa un vector a una función que recibe vectores, la función
-    utiliza todos los elementos del vector para su operación
-
-``` r
-# operaciones con vectores
-notas_algebra * 2
-```
-
-    ## [1] 100 140 120
-
-``` r
-(notas_algebra + notas_historia) / 2
-```
-
-    ## [1] 70.25 84.90 75.05
-
-``` r
-sum(notas_algebra)
-```
-
-    ## [1] 180
-
-``` r
-mean(notas_algebra) # media
-```
-
-    ## [1] 60
-
-``` r
-sd(notas_algebra)   # desviación estandar
-```
-
-    ## [1] 10
-
-### Selección de elementos de vectores (subconjuntos)
-
-Para poder seleccionar los elementos de los vectores es importante
-primero entender cómo están almacenados, como ejemplo usemos el vector
-`notas_algebra`:
-
-![](../pizarras/drawings/vector.png)
-
-Se pueden pensar los vectores como cajas alineadas consecutivamente. Los
-elementos de las cajas tienen un índice númerico correlativo que empieza
-en 1. Opcionalmente los elementos también pueden tener nombres.
-
-``` r
-# vector con indices vs. vector con nombres
-notas_algebra_indices <- c(50, 70, 60)
-notas_algebra_nombres <- c("1P" = 50, "2P" = 70, "3P" = 60)
-```
-
-Ahora para acceder a los elementos se debe usar el operador de
-subconjunto: \> `[]`
-
-``` r
-# selección o subconjuntos por indice
-notas_algebra_indices[1]
-```
-
-    ## [1] 50
-
-``` r
-notas_algebra_indices[3]
-```
-
-    ## [1] 60
-
-``` r
-notas_algebra_indices[1:2]
-```
-
-    ## [1] 50 70
-
-``` r
-notas_algebra_indices[c(1, 3)]
-```
-
-    ## [1] 50 60
-
-``` r
-cat("---\n")
-```
-
-    ## ---
-
-``` r
-# selección o subconjuntos por nombre
-notas_algebra_nombres["2P"]
-```
-
-    ## 2P 
-    ## 70
-
-``` r
-notas_algebra_nombres[c("1P", "3P")]
-```
-
-    ## 1P 3P 
-    ## 50 60
-
-También es posible seleccionar con valores lógicos:
-
-``` r
-notas_algebra[c(TRUE, FALSE, FALSE)]
-```
-
-    ## [1] 50
-
-Eso implica que podemos pasar una expresión comparativa que devuelva
-valores lógicos y que nos sirva para filtrar. Para ello, antes, debemos
-conocer dos tipos nuevos de operadores que nos ayudarán a construir esas
-expresiones:
-
-Operadores de comparación:
-
--   `<` menor que
--   `>` mayor que
--   `<=` menor o igual que
--   `>=` mayor o igual que
--   `==` igual a
--   `!=` no igual a
-
-Operadores lógicos:
-
--   `&` (y): solo devuelve verdadero si ambos verdaderos
--   `|` (o): devuelve falso cuando los dos son falsos
--   `!` (no): cambiar el valor de verdadero a falso y viceversa
-
-``` r
-# defino un vector del 1 al 20
-mi_vector <- 1:20
-
-# operaciones de comparación (devuelven valore lógicos)
-mi_vector > 10
-```
-
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-    ## [20]  TRUE
-
-``` r
-mi_vector >= 5 & mi_vector <= 15
-```
-
-    ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE
-    ## [20] FALSE
-
-``` r
-mi_vector == 10 | mi_vector == 20
-```
-
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [20]  TRUE
-
-``` r
-# filtrar (pasamos la expresión dentro de los corchetes)
-mi_vector[mi_vector > 10]
-```
-
-    ##  [1] 11 12 13 14 15 16 17 18 19 20
-
-## Matrices
-
-Sirven para almacenar datos de un solo tipo que tienen dos dimensiones,
-estilo tablas.
-
-Se las crea con la función `matrix()` o vinculando dos o más vectores
-por columna (`cbind()`) o fila (`rbind()`):
-
-``` r
-# matrices
-numeros <- 1:12
-mi_matriz <- matrix(numeros, nrow = 3, ncol = 4)
-notas_general <- cbind(notas_algebra, notas_historia)
-
-# seleccion de matricez
-mi_matriz[2, 2]
-```
-
-    ## [1] 5
-
-Tienen operaciones y modos de selección similares a los vectores.#
-Ejercicio: Media y desviación estandar
-
-``` r
-# ejercicio media (paso por paso)
-mi_media <- function(x) {
-  suma <- sum(x)
-  n <- length(x)
-  return(suma / n)
-}
-
-mi_media2 <- function(num){
-  abs(sum(x) / length(x))
-}
-
-
-# ejercicio desviacion estandar
-desv_estandar <- function(x){
-  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
-}
-
-desv_estandar2 <- function(x){
-  media <- mean(x)
-  n <- length(x) 
-  resta <- x - media
-  cuadrado <- resta ^ 2
-  suma <- sum(cuadrado)
-  div <- suma / (n - 1)
-  resultado <- sqrt(suma)
-  return(resultado)
-}
-```
-
-# Factores
-
-## Concepto
-
-``` r
-# de vector a factor (variable categorica)
-sexo_caracter <- c("Hombre", "Mujer", "Hombre")
-sexo_factor <- factor(sexo_caracter) # nominal
-summary(sexo_factor)
-```
-
-    ## Hombre  Mujer 
-    ##      2      1
-
-``` r
-rendimiento_caracter <- c("Bajo", "Medio", "Medio")
-rend_factor <- factor(rendimiento_caracter, order = TRUE, levels = c("Bajo", "Medio", "Alto")) # ordinal
-summary(rend_factor)
-```
-
-    ##  Bajo Medio  Alto 
-    ##     1     2     0
-
-``` r
-# no es factor o categorico
-gusto_escuela <- c("Pues no me parece tan bien..", "algo jejeje", "como q si")
-```
-
-# Data frames
-
-## Concepto
-
-``` r
-# definir varios vectores
-edad <- c(24, 22, 18)
-sexo_caracter <- c("Hombre", "Mujer", "Hombre")
-sexo_factor <- factor(sexo_caracter)
-gusto_universidad <- c("Pues no me parece tan bien..", "algo jejeje", "como q si")
-
-# crear data frame
-tabla <- data.frame(edad, sexo_factor, gusto_universidad)
-
-# algunas operaciones sobre columnas
-mean(tabla$edad)
-```
-
-    ## [1] 21.33333
-
-``` r
-summary(tabla$sexo_factor)
-```
-
-    ## Hombre  Mujer 
-    ##      2      1
-
-``` r
-print(tabla$gusto_universidad)
-```
-
-    ## [1] "Pues no me parece tan bien.." "algo jejeje"                  "como q si"
-
-``` r
-# cargar un data frame
-gap <- read.csv("../data/gapminder.csv")
-
-# Ejercicio
-# crear un data frame con 5 casos 
-# y que tengan al menos 5 variables (dos numericas, dos factores, uno de caracter)
-
-desv_tipica <- function(x){
-  media <- mean(x)
-  n <- length(x)
-  varianza <- sum((x - media) ^ 2)
-  sqrt(varianza / (n - 1))
-}
-```
-
-``` r
-# Data frame
-estudiantes <- c("Abigail", "Dario", "Nicaela", "Javier", "Vicente")
-notas <- c(30, 60, 61, 20, 10)
-tabla <- data.frame(estudiantes, notas)
-tabla$aprobacion <- tabla$notas > 50
-```
-
-# Vectores y matrices
+# Leer y escribir datos
 
 ## Leer datos
 
