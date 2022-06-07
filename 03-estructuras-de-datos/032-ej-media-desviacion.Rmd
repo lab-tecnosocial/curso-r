@@ -1,3 +1,11 @@
+---
+title: "Ejercicio: Media y desviación estandar"
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r}
 # ejercicio media (paso por paso)
 mi_media <- function(x) {
   suma <- sum(x)
@@ -25,4 +33,7 @@ desv_estandar2 <- function(x){
   resultado <- sqrt(suma)
   return(resultado)
 }
+
+
+```
 

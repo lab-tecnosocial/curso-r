@@ -1,0 +1,19 @@
+
+#
+Vectores y matrices
+./03-estructuras-de-datos/031-vectores-matrices.Rmd
+#
+Ejercicio: Media y desviación estandar
+./03-estructuras-de-datos/032-ej-media-desviacion.Rmd
+#
+Factores
+./03-estructuras-de-datos/033-factores.Rmd
+#
+Data frames
+./03-estructuras-de-datos/034-data-frame.Rmd
+#
+Vectores y matrices
+./03-estructuras-de-datos/035-leer-escribir-datos.Rmd
+#
+Listas
+./03-estructuras-de-datos/036-listas.Rmd

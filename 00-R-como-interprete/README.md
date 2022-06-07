@@ -1,14 +1,14 @@
-R como un interprete
+R como interprete
 ================
 
 ## ¿Qué es R?
 
-R es un sistema para la estadística computacional. Pero puede ser mejor
-entendido por sus usuarios nuevos tanto como un lenguaje de programación
-y un interprete que traduce ese lenguaje a operaciones computacionales
-útiles sobre datos.
+R es un sistema para la estadística computacional. Pero es mejor
+entenderlo tanto como un lenguaje de programación y un interprete que
+traduce ese lenguaje a operaciones computacionales útiles sobre datos.
 
-    humano (español) - R (R) - computadora (binario)
+![](../pizarras/drawings/comunicacion-con-R.png) Es decir que para
+comunicarte con R debes usar un “código” en R.
 
 ## Evaluación
 
@@ -31,42 +31,44 @@ y expresiones.
 Las declaraciones son instrucciones de acción simples que se ejecutan de
 inmediato:
 
--   Asigna el dato de la derecha a esta variable: `priper_parcial <- 55`
+-   Asigna el dato de la derecha a esta variable: `primer_parcial <- 55`
 -   Imprime el contenido de este dato: `print(primer_parcial)`
 -   Crea esta función: `cuadrado <- function(x) x * x`
 
 ## Expresiones (*expressions*)
 
 Las expresiones son una combinación compleja de declaraciones,
-funciones, variables y datos que se evaluan a un valor usable, por
-ejemplo:
+funciones, variables y datos que se evaluan o reducen a un valor usable,
+por ejemplo:
 
 ``` r
 resultado <- sum(primer_parcial * 1, segundo_parcial * 2, tercer_parcial * 3) / sum(1:3)
 ```
 
-Más adelante definiremos de forma más precisa todos estos terminos.
+Más adelante definiremos de forma más precisa todos estos terminos.Lo
+importante ahora es ver que con el lenguaje de R se pueden expresar
+cosas complejas.
 
 ## Comentarios (*comments*)
 
-Hay un texto especial que no es evaluado por R, pero que sirve para uno
-mismo anotar nuestras ideas en nuestro propio idioma y se llaman
+Hay un texto especial que no es evaluado por R, pero que sirve para que
+anotemos nuestras ideas en nuestro propio idioma y se llaman
 comentarios. Se marcan con un simbolo de `#`.
 
 ``` r
 # este comentario no se evalua, pero sirve para hacer anotaciones para uno mismo o para otros
 
-sum(2, 2) # esta linea de codigo suma dos más dos
+sum(2, 2) # puedo anotar la utilidad de esta expresión: esta linea de codigo suma dos más dos
 ```
 
     ## [1] 4
 
 ## Secuencia de instrucciones (*scripts*)
 
-Normalmente escribiras muchas expresiones, sentencias, funciones y
-variables combinadas en un solo archivo, que será una especio de “guión”
-(script) que R deberá ejecutar. Estos archivos normalmente se ejecutan
-de arriba hacía abajo secuencialmente, por ejemplo:
+Normalmente escribiras muchas expresiones, declaraciones, funciones y
+variables combinadas en un solo archivo, que será una especie de “guión”
+(script) que R deberá ejecutar, paso a paso. Estos archivos normalmente
+se ejecutan de arriba hacía abajo secuencialmente, por ejemplo:
 
 ``` r
 primer_parcial <- 55 # asigna un valor a una variable
@@ -78,8 +80,9 @@ print(resultado) # se imprime o muestra el contenido de la variable resultado
 
     ## [1] 57.5
 
-Estos scripts se guardan en diferentes archivos que terminan en la
-extensión `.R`.
+Estos scripts se pueden guardar en diferentes archivos que terminan en
+la extensión `.R`. Estos serán los “programas” que crearás y que R
+interpretará.
 
 ## Referencias
 
