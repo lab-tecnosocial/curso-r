@@ -5,15 +5,16 @@ output:
     html_preview: false
 ---
 
+## Concepto
 
 ```{r}
 # de vector a factor (variable categorica)
 sexo_caracter <- c("Hombre", "Mujer", "Hombre")
-sexo_factor <- factor(sexo) # nominal
+sexo_factor <- factor(sexo_caracter) # nominal
 summary(sexo_factor)
 
 rendimiento_caracter <- c("Bajo", "Medio", "Medio")
-rend_factor <- factor(rendimiento, order = TRUE, levels = c("Bajo", "Medio", "Alto")) # ordinal
+rend_factor <- factor(rendimiento_caracter, order = TRUE, levels = c("Bajo", "Medio", "Alto")) # ordinal
 summary(rend_factor)
 
 # no es factor o categorico

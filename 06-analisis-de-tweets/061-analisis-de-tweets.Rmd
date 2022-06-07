@@ -1,6 +1,8 @@
 ---
 title: "Análisis de tweets"
-output: github_document
+output:  
+  github_document:
+    html_preview: false
 ---
 
 # Recolección
@@ -25,7 +27,7 @@ library(tidyverse)
 
 
 ## Buscar
-```{r}
+```{r, eval=F}
 palabras_clave = "bitcoin bolivia"
 tweets <- search_tweets(q = palabras_clave, n = 100, include_rts = F)
 tweets
@@ -35,7 +37,7 @@ tweets
 
 Separar palabras:
 
-```{r}
+```{r, eval=F}
 palabras <- tweets %>%
   unnest_tokens(palabra, text) %>%
   select(status_id, palabra)

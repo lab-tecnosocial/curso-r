@@ -5,12 +5,13 @@ output:
     html_preview: false
 ---
 
+## Concepto
 
 ```{r}
 # definir varios vectores
 edad <- c(24, 22, 18)
-sexo_factor <- factor(sexo)
 sexo_caracter <- c("Hombre", "Mujer", "Hombre")
+sexo_factor <- factor(sexo_caracter)
 gusto_universidad <- c("Pues no me parece tan bien..", "algo jejeje", "como q si")
 
 # crear data frame
@@ -22,9 +23,9 @@ summary(tabla$sexo_factor)
 print(tabla$gusto_universidad)
 
 # cargar un data frame
-gap <- read.csv("gapminder.csv")
+gap <- read.csv("../data/gapminder.csv")
 
-# Ejercicio ---
+# Ejercicio
 # crear un data frame con 5 casos 
 # y que tengan al menos 5 variables (dos numericas, dos factores, uno de caracter)
 

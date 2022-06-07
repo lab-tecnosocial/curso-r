@@ -1,4 +1,5 @@
 library(rmarkdown)
+library(readr)
 library(stringr)
 
 knit_readme <- function(directory){
@@ -11,17 +12,18 @@ knit_readme <- function(directory){
   } else {
     path_file <- paste0(directory, "/","temp.Rmd")
     file.create(path_file)
-    cat(cat("#", directory), file = path_file, sep = "\n")
+    write_file(paste("#", directory, "\n"), file = path_file, append = T)
     for(i in seq_along(rmds)){
       title <- yaml_front_matter(rmds[i])$title
-      body <- str_remove(rmds[i], "---(.|\n)*---")
-      cat("#", title, file = path_file, append = T, sep = "\n")
-      cat(body, file = path_file, sep = "\n", append = T)
+      doc <- read_file(rmds[i]) 
+      body <- str_remove(doc, "---\\n(.|\n)*\\n---\\n")
+      write_file(paste("#", title, "\n"), file = path_file, append = T)
+      write_file(body, file = path_file, append = T)
       message("Archivo ", rmds[i], " procesado")
     }
     render(path_file, output_format = github_document(html_preview = F), output_file = "README.md")
     message("README listo")
-    # file.remove(path_file)
+    file.remove(path_file)
   }
 }
 
