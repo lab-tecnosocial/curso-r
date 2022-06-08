@@ -5,10 +5,20 @@ output:
     html_preview: false
 ---
 
-```{r, eval=F}
-# Agrupar (para comparar): group_by()
-grupos <- data %>%
-  group_by(year, continent) %>%
+En los data frame, los valores de algunas columnas reflejan grupos. Para el caso de gapminder están `continent` y `year`, por ejemplo. Entonces muchas veces necesitaremos hacer calculos por grupos para compararlos, para ello está la función `group_by()`.
+
+Por ejemplo, podemos agrupar por continente y recién extraer un calculo de la mediana:
+
+```{r}
+data %>%
+  group_by(continent) %>%
+  summarize(mediana_esp = median(lifeExp))
+```
+O agrupar por una combinación de variables, como continente y año, y que nos permite comparar con más valores:
+
+```{r}
+data %>%
+  group_by(continent, year) %>%
   summarize(mediana_esp = median(lifeExp))
 ```
 

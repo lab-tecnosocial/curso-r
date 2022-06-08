@@ -1,28 +1,75 @@
 ---
-title: "Filtrar y seleccionars"
+title: "Filtrar y seleccionar"
 output: 
   github_document:
     html_preview: false
 ---
 
-```{r, eval=F}
+Dos operaciones muy comunes y básicas al trabajar con tablas de datos (tibbles en tidyverse) se refieren a poder seleccionar un número especifico de filas y columnas. Para ello en el caso de las filas podemos usar la función de filtrar (`filter()`)  y seleccionar para las columnas (`select()`).
+
+Usaremos el dataset de `gapminder`, un dataset económico. para todos los ejemplos. Tiene seis variables:
+
+- `country`: pais
+- `continent`: continente
+- `year`: año
+- `lifeExp`: esperanza de vida
+- `pop`: población total
+- `gdpPercap`: PIB per capita
+
+```{r}
 # cargar tydiverse
 library(tidyverse)
 
-# cargar
-data <- read_csv("data/gapminder.csv")
+# cargar los datos desde el CSV
+data <- read_csv("../data/gapminder.csv")
 
-# Verbos de manipulación: filter(), arrange(), mutate() -----
+# Ver los datos
+data
+```
+Si quisieramos filtrar solo el pais de Bolivia, entonces:
 
-# Filtrar filter()
+- Declaramos el nombre de la variable que referencia a los datos
+- Pasamos un pipe
+- Usamos la función `filter()` que recibe una o más expresiones comparativas y lógicas:
+
+```{r}
+# Filtrar pais de Bolivia
 data %>%
   filter(country == "Bolivia", lifeExp < 50)
+```
+```{r}
+# Filtrar pais de Bolivia y cuándo tuvieron una esperanza de vida menor de 50 años
+data %>%
+  filter(country == "Bolivia", lifeExp < 50)
+```
+Adicionalmente podemos usar la función `arrange()` para ordenar la tabla por un criterio de ascendente o descendente y usando alguna columna:
 
-# Ordenar: arrange() (menor a mayor); mayor a menor desc()
+```{r}
+# Ordenar: arrange() (menor a mayor); mayor a menor con desc()
 data %>%
   filter(country == "Bolivia", lifeExp < 50) %>%
   arrange(desc(gdpPercap))
+```
+Los anteriores procedimientos solo muestran el resultado, pero no lo guardan. Para guardar explicitamente debemos asignar el resultado a una variable, con lo cual podemos trabajar solo con ese subconjunto. Por ejemplo:
+
+```{r}
+bolivia <- data %>%
+  filter(country == "Bolivia", lifeExp < 50)
+```
 
 
+Ahora bien para seleccionar columnas usamos `select()` y le pasamos una o más columnas
+
+```{r}
+bolivia %>%
+  select(year, pop)
+```
+Naturalmente podemos combinar `filter()` con `select()` y `arrange()`:
+
+```{r}
+data %>%
+  select(country, year, gdpPercap) %>%
+  filter(country == "Bolivia") %>%
+  arrange(desc(gdpPercap))
 ```
 

@@ -5,33 +5,37 @@ output:
     html_preview: false
 ---
 
-```{r, eval=F}
-# Contar: count()
-data %>% count(continent)
-data %>% count(year)
+Filtrar y seleccionar nos permiten reducir las filas y columnas de un data frame. Pero en otras ocasiones necesitaremos también hacer cálculos, a nivel de columna o filas. Para sacar resultados a nivel de columna y comprimir la fila a un solo valor, utilizaremos `summarize()`. Mientras que para hacer un cálculo de todos los valores de una columna, fila por fila, utilizaremos `mutate()`, que crea nuevas columnas.
 
-# Resumir (colapsar el vector columna en un solo valor): summarize()
+Por ejemplo, si queremos extraer la mediana de la esperanza de vida:
+
+- A `summarize()` le pasamos una expresión de asignación con el operador `=`, donde a la izquierda creamos un nombre y a la derecha alguna expresión que puede usar las variables del data frame:
+
+```{r}
+# Calcular mediana de la esperanza de vida
+data %>%
+  summarize(mediana_esp_vida = median(lifeExp))
+```
+Podemos combinarlo con `filter()` y calcular varios resumenes:
+
+```{r}
+# Resumir
 data %>%
   filter(year == 1952) %>%
-  summarize(mediana_esp_vida = median(lifeExp), media_pib = mean(gdpPercap))
+  summarize(mediana_esp_1952 = median(lifeExp), media_pib_1952 = mean(gdpPercap))
+```
+Ahora bien para calcular nuevas columnas y agregarlas al data frame, usaremos `mutate()`. Por ejemplo, calculando la esperanza de vida en meses:
 
+```{r}
 data %>%
-  filter(year == 2007) %>%
-  summarize(media_esp_vida = median(lifeExp))
+  mutate(lifeExpMes = lifeExp * 12)
+```
 
-# Mutar (crear nuevas variables o cambiarlas): mutate()
-## seleecionado solo bolivia y le pasado a la variable bolivia
-bolivia <- data %>%
-  filter(country == "Bolivia")
+También podemos agregar varias columnas al mismo tiempo. Y si queremos que los cambios se guarden en la tabla original, la debemos sobreescribir:
 
-bolivia <- bolivia %>%
-  mutate(lifeExpMes = lifeExp * 12) %>%
-  mutate(popMillon = pop / 1000000)
-
-# Con Peru
-data_peru <- data %>%
-  filter(country == "Peru")
-
-
+```{r}
+data <- data %>%
+  mutate(lifeExpMes = lifeExp * 12, popMillon = pop / 1000000)
+data
 ```
 

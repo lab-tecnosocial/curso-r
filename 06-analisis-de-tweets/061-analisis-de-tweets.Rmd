@@ -4,48 +4,62 @@ output:
   github_document:
     html_preview: false
 ---
+## Instalar y cargar librerias necesarias
 
-## Recolección
+Instalar:
 
-Usaremos el paquete Rtweet:
-
-1. Instalarlo
-2. Buscar tweets con palabras clave
-3. Un dataframe para trabajar
-
-## Instalar y cargar librerias
+- `rtweet`: para recolectar los datos de la API gratuita de Twitter
+- `tidytext`: para hacer un poco de mineria de texto
 
 ```{r, eval=F}
 install.packages("rtweet")
+install.packages("tidytext")
 ```
 
+Cargar: 
 ```{r, warning=F}
+library(tidyverse)
 library(rtweet)
 library(tidytext)
-library(tidyverse)
 ```
 
 
 ## Buscar
+```{r include=FALSE}
+tweets <- read_csv("tweets.csv")
+```
+
 ```{r, eval=F}
 palabras_clave = "bitcoin bolivia"
 tweets <- search_tweets(q = palabras_clave, n = 100, include_rts = F)
+```
+
+```{r}
+# Mostrar datos recolectados
 tweets
+```
+
+Guardar los datos:
+```{r}
+write_as_csv(tweets, "tweets.csv")
 ```
 
 ## Análisis
 
 Separar palabras:
 
-```{r, eval=F}
+```{r}
 palabras <- tweets %>%
   unnest_tokens(palabra, text) %>%
   select(status_id, palabra)
+```
 
+Contar palabras con la función `count()`:
+
+```{r}
 conteo <- palabras %>%
   count(palabra, sort = T)
 conteo
 ```
-
 
 

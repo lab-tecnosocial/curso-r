@@ -1,0 +1,87 @@
+---
+title: "Graficos con ggplot"
+output: 
+  github_document:
+    html_preview: false
+---
+
+Podemos generar muchos tipos de gráficos con el paquete `ggplot`. Este genera gráficos a partir de declarar:
+- Los datos que se usarán
+- La función `ggplot()` que lleva dentro una función de mapeos estéticos con `aes()` y que recibe argumentos como `x`, `y`, `color`, `size` donde debes pasar las variables del dataset que te interese gráficar.
+- Una capa de geometrias precedida del simbolo `+`: `geom_point()`, `geom_line()`, `geom_histogram()`, `geom_bar()`, etc.
+- Opcionalmene otras capas para modificar las escalas o el sistema de coordenadas, entre otras.
+
+```{r}
+# Graficar en PIB per capita con esperanza de vida en una gráfico de puntos
+data %>%
+  filter(year == 1952) %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10() # para que los puntos no se vea tan ajustados
+```
+
+## Gráfico de barras
+
+```{r}
+# Graficos de barras: geom_bar() y geom_col()
+# Número de paises en cada continente
+data %>%
+  filter(year == 2007) %>%
+  ggplot(aes(x = continent)) +
+  geom_bar()
+```
+
+## Histogramas
+
+```{r}
+# Histogramas con geom_histogram()
+# Distribución de población en el año de 1952
+data_1952 <- data %>%
+  filter(year == 1952)
+ 
+data_1952 %>%
+  ggplot(aes(pop)) +
+  geom_histogram() +
+  scale_x_log10()
+
+```
+
+## Grafico de lineas
+
+```{r}
+# Graficos de lineas: geom_line()
+grupos <- data %>%
+  group_by(continent, year) %>%
+  summarize(mediana_esp = median(lifeExp))
+
+grupos %>%
+  ggplot(aes(x = year, y = mediana_esp, color = continent)) +
+  geom_line()
+```
+
+
+## Diagrama de cajas (boxplots)
+
+```{r}
+# Diagrama con geom_boxplot()
+# Distribución de gdpPercap entre los continentes
+data_1952 %>%
+  ggplot(aes(x = continent, y = gdpPercap)) +
+  geom_boxplot() +
+  scale_y_log10()
+```
+
+## Facetados
+
+Es posible también crear una suerte de matriz de datos con los facetados (`facet_wrap()`):
+
+```{r}
+# Facetados o matrices de gráficos
+data %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, color = continent, size = pop)) +
+  geom_point() +
+  scale_x_log10() +
+  facet_wrap(~year)
+```
+
+
