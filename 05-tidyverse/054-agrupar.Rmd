@@ -1,0 +1,14 @@
+---
+title: "Agrupar"
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r, eval=F}
+# Agrupar (para comparar): group_by()
+grupos <- data %>%
+  group_by(year, continent) %>%
+  summarize(mediana_esp = median(lifeExp))
+```
+

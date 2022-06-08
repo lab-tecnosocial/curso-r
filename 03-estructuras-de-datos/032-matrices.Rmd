@@ -5,17 +5,54 @@ output:
     html_preview: false
 ---
 ## Concepto
-Sirven para almacenar datos de un solo tipo que tienen dos dimensiones, estilo tablas.
 
-Se las crea con la función `matrix()` o vinculando dos o más vectores por columna (`cbind()`) o fila (`rbind()`):
+Sirven para almacenar datos de un solo tipo que tienen dos dimensiones, al estilo de las tablas.
+
+Se las crea con la función `matrix()`, donde al menos hay que pasar como argumentos un vector, el número de filas (`nrow`) y el número de columnas (`ncol`):
+
 ```{r}
-# matrices
+# con la funcion matrix()
 numeros <- 1:12
-mi_matriz <- matrix(numeros, nrow = 3, ncol = 4)
-notas_general <- cbind(notas_algebra, notas_historia)
-
-# seleccion de matricez
-mi_matriz[2, 2]
+mi_matriz <- matrix(numeros, nrow = 3, ncol = 4) # matriz 3x4
+mi_matriz
 ```
 
-Tienen operaciones y modos de selección similares a los vectores.
+También se puede crear matrices combinando dos o más vectores existentes por columna (`cbind()`) o fila (`rbind()`):
+
+```{r}
+# con cbind()
+notas_algebra <- c(50, 70, 60)
+notas_historia <- c(90.5, 99.8, 90.1) 
+notas_general <- cbind(notas_algebra, notas_historia)
+notas_general
+```
+
+Su estructura posee, como los vectores, indices y nombres, pero esta vez en dos dimensiones:
+
+![](../pizarras/drawings/matriz.png){width=30%}
+
+Entonces tiene modos de selección similares a los vectores, pero con dos elementos:
+
+```{r}
+# seleccion de matrices
+mi_matriz[2, 2] # elemento de la segunda fila y segunda columna
+mi_matriz[ , 3] # toda la tercera columna
+mi_matriz[1, ] # toda la primera fila
+```
+
+Mientras nombrar sus elementos y seleccionarlos por su nombre se daría de la siguiente forma:
+
+```{r}
+colnames(mi_matriz) <- c("A", "B", "C", "D")
+rownames(mi_matriz) <- c("p", "q", "r")
+mi_matriz
+mi_matriz["p", "A"]
+```
+
+También se pueden hacer operaciones con matrices:
+```{r}
+mi_matriz * 2 # duplicar todos sus elementos
+rowSums(mi_matriz) #sumar filas
+colSums(mi_matriz) # sumar columnas
+```
+

@@ -4,11 +4,53 @@ output:
   github_document:
     html_preview: false
 ---
-
-
 ## Leer datos
 
+Normalmente no tendremos que crear los datos primarios en R, sino importar los datos de otra fuente (una excepción es la importación de datos mediante consultas a APIs y el scraping). Para ello es útil saber como "leerlos" y transformarlos a un data frame.
+
+Las funciones de importación dependerán del formato de los datos. Los formatos más populares y que vereos son:
+
+- CSV (Comma Separated Value). Un formato de simple texto plano. Si no lo conoces, puedes ver este video: https://www.youtube.com/watch?v=SaHIUR9jIPY
+- Excel (.xlsx)
+- SPSS (.sav)
+
+Para leer CSV usaremos la función `read.csv()` (o alternativamente `read_csv()` de `tidyverse`), que recibe el argumento de la **ruta** (*path*). La ruta es donde se encuentra el archivo en tu sistema de archivos, donde las carpetas se separan con un `/` y al último se encuentran los nombres de archivos generalmente con una extensión de su tipo de archivo.
+
+Si estas en un proyecto de RStudio, que no es más que una carpeta, entonces mueve tus archivos de datos a tu carpeta para un acceso más directo:
+
+```{r}
+datos_csv <- read.csv("datos/gapminder.csv")
+head(datos_csv)
+```
+Para leer archivos de Excel y de SPSS tendremos que instalar y cargar los paquetes: `readxl` y `haven` de `tidyverse`. Ver las lecciones de Tidyverse para más instrucciones.
+
+Para leer archivos usamos la función `read_excel()`, que devuelve un data frame listo para el análisis:
+
+```{r}
+library(readxl) # cargamos el paquete donde 'vive' la función
+datos_excel <- read_excel("datos/gapminder.xlsx")
+datos_excel
+```
+
+Para leer archivos de SPSS se puede usar la función `read_sav()`:
+
+```{r}
+library(haven) # cargamos el paquete donde 'vive' la función
+datos_spss <- read_sav("datos/gapminder.sav")
+datos_spss
+```
 
 ## Escribir datos
+
+Para "escribir" los datos en un archivo o guardarlos, existen funciones similares a las de lectura, a las cuales también debemos pasarle dos argumentos obligatorios: el data frame y la ruta:
+
+- Para CSV: `write.csv()` o alternativamente `write_csv()` de `tidyverse`
+- Para Excel: `write_xlsx()` del paquete `writexl`
+- Para SPSS: `write_sav()` del paquete `haven`
+
+Por ejemplo, para CSV:
+```{r}
+write.csv(datos_csv, "datos/mi-csv.csv")
+```
 
 

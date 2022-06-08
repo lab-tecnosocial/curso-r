@@ -1,0 +1,37 @@
+---
+title: "Resumir y mutar"
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r, eval=F}
+# Contar: count()
+data %>% count(continent)
+data %>% count(year)
+
+# Resumir (colapsar el vector columna en un solo valor): summarize()
+data %>%
+  filter(year == 1952) %>%
+  summarize(mediana_esp_vida = median(lifeExp), media_pib = mean(gdpPercap))
+
+data %>%
+  filter(year == 2007) %>%
+  summarize(media_esp_vida = median(lifeExp))
+
+# Mutar (crear nuevas variables o cambiarlas): mutate()
+## seleecionado solo bolivia y le pasado a la variable bolivia
+bolivia <- data %>%
+  filter(country == "Bolivia")
+
+bolivia <- bolivia %>%
+  mutate(lifeExpMes = lifeExp * 12) %>%
+  mutate(popMillon = pop / 1000000)
+
+# Con Peru
+data_peru <- data %>%
+  filter(country == "Peru")
+
+
+```
+

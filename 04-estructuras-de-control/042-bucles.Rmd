@@ -1,0 +1,36 @@
+---
+title: "Bucles"
+output: 
+  github_document:
+    html_preview: false
+---
+
+## Concepto
+
+En muchas ocasiones vamos a querer repetir ciertas operaciones sobre unos mismos datos (vectores o listas). Para ese necesitaremos los **bucles** (*loops*).
+
+El bucle más común es el bucle definido `for in`, donde:
+
+- Se escribe la palabra clave `for()`
+- Se especifica el indice y su rango `(i in rango)`
+- Se usa el indice en el cuerpo para repetir `{vector[i]}`
+- El código del cuerpo se repetira las veces que especifique el rango.
+
+Por ejemplo:
+
+```{r}
+numeros <- c(2, 4, 8, 10, 12)
+for(i in 1:length(numeros)){
+  print(2 + numeros[i])
+}
+```
+
+En R no es necesario construir constantemente bucles como en otros lenguajes de programación. Esto se debe a que muchas operaciones ya son vectorizadas, lo que quiere decir que ya se repiten cuando usas un vector.
+
+Podemos obtener un resultado similar al anterior simplement con lo siguiente:
+
+```{r}
+2 + numeros
+```
+
+Además existe la alternativa de usar las repeticiones de forma más comoda que los bucles con `lapply()` (ver siguiente documento).

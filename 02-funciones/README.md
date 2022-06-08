@@ -7,7 +7,7 @@ Una función es un procedimiento que recibe unos datos y parametros
 (entradas) y devuelve un resultado (salida).Puedes entenderlo como un
 mini sistema:
 
-![](../pizarras/drawings/funcion.png)
+<img src="../pizarras/drawings/funcion.png" style="width:50.0%" />
 
 Podemos diferenciar entre tres tipos de funciones, según quién lo creo:
 
@@ -23,7 +23,7 @@ Para definir una función es útil tomar en cuenta las siguientes
 consideraciones:
 
 -   Piensa en resolver un problema bien definido, que será el objetivo
-    de la función.Aquí piensa en el punto de partida de la función
+    de la función. Aquí piensa en el punto de partida de la función
     (entradas o “argumentos”): los datos e información necesaria.
 -   Piensa en un procedimiento que resolverá el problema. Un
     procedimiento es una secuencia ordenada de pasos. Aquí puedes hacer
@@ -33,7 +33,10 @@ consideraciones:
 Crear funciones es una forma de empaquetar una serie de acciones útiles
 que podemos reusar en varias instancias del problema que resuelve la
 función. La función luego se vuelve una caja negra que podemos usar como
-un bloque simple para construir soluciones más complejas.
+un bloque simple para construir soluciones más complejas.Si ves que
+estás usando un mismo bloque de código varias veces, copiandolo y
+cambiando sus datos principales, entonces ese bloque de código es un
+buen candidato para una función.
 
 ## Sintaxis
 
@@ -139,10 +142,12 @@ help(mean)
 ?mean
 ```
 
-![](../pizarras/drawings/documentation-mean.png) La función `help()` o
-su abrevación `?` muestra la documentación. Allí podemos ver la
-descripción de la función, los argumentos que recibe, el valor de
-retorno y ejemplos de uso.
+<img src="../pizarras/drawings/documentation-mean.png"
+style="width:30.0%" />
+
+La función `help()` o su abrevación `?` muestran la documentación. Allí
+podemos ver la descripción de la función, los argumentos que recibe, el
+valor de retorno y ejemplos de uso.
 
 Asimismo, con la función `args()` podemos ver solo los argumentos.
 
@@ -169,7 +174,7 @@ print(paste(toupper(nombre), "tu promedio general es:",  sum(prom_semestre1, pro
 
     ## [1] "ALEX tu promedio general es: 63.5"
 
-La evaluación de las funciones compuestas es de adentro hacía afuera.
+La evaluación de las funciones compuestas se da de adentro hacía afuera.
 
 ## Más ejemplos
 

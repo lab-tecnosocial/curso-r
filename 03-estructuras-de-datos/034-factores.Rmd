@@ -7,19 +7,44 @@ output:
 
 ## Concepto
 
+A veces necesitamos almacenar variables categóricas que tienen un un conjunto conocido y fijo de valores, y que no son propiamente datos de tipo numérico y tampoco de tipo texto. Para ello en R existen los "factores".
+
+Los factores se crean con la función `factor()`, y pueden haber factores sin orden ("nominales") y con orden ("ordinales"):
+
 ```{r}
-# de vector a factor (variable categorica)
-sexo_caracter <- c("Hombre", "Mujer", "Hombre")
+# de vector a factor nominal
+sexo_caracter <- c("Hombre", "Mujer", "Hombre", "Hombre", "Mujer")
 sexo_factor <- factor(sexo_caracter) # nominal
-summary(sexo_factor)
-
-rendimiento_caracter <- c("Bajo", "Medio", "Medio")
-rend_factor <- factor(rendimiento_caracter, order = TRUE, levels = c("Bajo", "Medio", "Alto")) # ordinal
-summary(rend_factor)
-
-# no es factor o categorico
-gusto_escuela <- c("Pues no me parece tan bien..", "algo jejeje", "como q si")
-
+sexo_factor
 ```
 
+```{r}
+# de vector a factor ordinal
+rendimiento_caracter <- c("Bajo", "Medio", "Medio", "Alto", "Bajo")
+rend_factor <- factor(rendimiento_caracter, order = TRUE, levels = c("Bajo", "Medio", "Alto")) # ordinal
+rend_factor
+```
+
+## Operaciones
+
+Los factores son útiles para hacer conteos, cambiar el orden de sus niveles y hacer clasificaciones, por ejemplo:
+
+```{r}
+summary(sexo_factor)
+summary(rend_factor)
+levels(sexo_factor) <- c("Mujer", "Hombre")
+sexo_factor
+```
+Los factores ordinales también pueden ser comparados:
+```{r}
+rend_factor[1] > rend_factor[2]
+```
+
+Tomar en cuenta que no todo dato de texto es categórico. Si vemos texto que no tiene un conjunto de valores conocidos y fijos, entonces estamos frente a un tipo de dato que no nos conviene transformarlo a factor:
+
+```{r}
+# no es factor o categorico
+gusto_escuela <- c("Pues no me parece tan bien..", "algo jejeje", "como q si")
+class(gusto_escuela)
+```
 

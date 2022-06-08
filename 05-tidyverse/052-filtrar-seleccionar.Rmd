@@ -1,0 +1,28 @@
+---
+title: "Filtrar y seleccionars"
+output: 
+  github_document:
+    html_preview: false
+---
+
+```{r, eval=F}
+# cargar tydiverse
+library(tidyverse)
+
+# cargar
+data <- read_csv("data/gapminder.csv")
+
+# Verbos de manipulación: filter(), arrange(), mutate() -----
+
+# Filtrar filter()
+data %>%
+  filter(country == "Bolivia", lifeExp < 50)
+
+# Ordenar: arrange() (menor a mayor); mayor a menor desc()
+data %>%
+  filter(country == "Bolivia", lifeExp < 50) %>%
+  arrange(desc(gdpPercap))
+
+
+```
+

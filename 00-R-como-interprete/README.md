@@ -8,7 +8,7 @@ entenderlo tanto como un lenguaje de programación y un interprete que
 traduce ese lenguaje a operaciones computacionales útiles sobre datos.
 
 ![](../pizarras/drawings/comunicacion-con-R.png) Es decir que para
-comunicarte con R debes usar un “código” en R.
+comunicarte con R debes usar un “código” escrito en R.
 
 ## Evaluación
 
@@ -38,14 +38,14 @@ inmediato:
 ## Expresiones (*expressions*)
 
 Las expresiones son una combinación compleja de declaraciones,
-funciones, variables y datos que se evaluan o reducen a un valor usable,
-por ejemplo:
+funciones, variables y datos que se evaluan a un valor usable, por
+ejemplo:
 
 ``` r
 resultado <- sum(primer_parcial * 1, segundo_parcial * 2, tercer_parcial * 3) / sum(1:3)
 ```
 
-Más adelante definiremos de forma más precisa todos estos terminos.Lo
+Más adelante definiremos de forma más precisa todos estos terminos. Lo
 importante ahora es ver que con el lenguaje de R se pueden expresar
 cosas complejas.
 
@@ -58,7 +58,7 @@ comentarios. Se marcan con un simbolo de `#`.
 ``` r
 # este comentario no se evalua, pero sirve para hacer anotaciones para uno mismo o para otros
 
-sum(2, 2) # puedo anotar la utilidad de esta expresión: esta linea de codigo suma dos más dos
+sum(2, 2) # puedo anotar el proposito de esta expresión: esta linea de codigo suma dos más dos
 ```
 
     ## [1] 4
@@ -67,8 +67,9 @@ sum(2, 2) # puedo anotar la utilidad de esta expresión: esta linea de codigo su
 
 Normalmente escribiras muchas expresiones, declaraciones, funciones y
 variables combinadas en un solo archivo, que será una especie de “guión”
-(script) que R deberá ejecutar, paso a paso. Estos archivos normalmente
-se ejecutan de arriba hacía abajo secuencialmente, por ejemplo:
+(script) que R deberá ejecutar, linea por linea. Estos archivos
+normalmente se ejecutan de arriba hacía abajo secuencialmente, por
+ejemplo:
 
 ``` r
 primer_parcial <- 55 # asigna un valor a una variable

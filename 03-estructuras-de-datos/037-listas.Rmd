@@ -7,4 +7,43 @@ output:
 
 ## Concepto
 
+Cuando tenemos la necesidad de guardar objetos heterogeneos, de diferentos tipos y tamaños, podemos usar las **listas**. Estas pueden conenter vectores, matrices, data frames y hasta otras listas.
+
+Las listas se crean con la función `list()`.
+
+```{r}
+# Muchos objetos en R de diferentes tipos y tamaños
+mi_texto <- "Alex"
+mi_vector <- 1:10 
+mi_matriz <- matrix(1:9, nrow = 3, ncol = 3)
+mi_df <- data.frame("a" = 1:5, "b" = 11:15)
+
+# Construir lista y verla
+mi_lista <- list(mi_texto, mi_vector, mi_matriz, mi_df)
+mi_lista
+```
+
+Podemos **seleccionar** elementos de la lista con el operador `[]` y pasarle el indice. Alternativamente podemos usar el doble corchete `[[]]` si lo que queremos es que nos devuelva el elemento directo con su tipo de dato original:
+
+```{r}
+mi_lista[1] # devuelve una lista con el elemento dentro
+mi_lista[[1]] # devuelve el elemento directo con su tipo de dato original
+```
+
+Podemos ir más allá y seleccionar que están más 'al fondo' de la lista, poniendo los operadores de selección a lado:
+
+```{r}
+mi_lista[[2]][2]
+```
+
+En la selección con nombres podemos usar tanto el operador de corchete como el simbolo `$`:
+
+```{r}
+# Dar nombres a los elementos de la lista
+names(mi_lista) <- c("nombre", "vec", "mat", "df")
+mi_lista
+
+# Seleccionar un elemento con $
+mi_lista$mat
+```
 

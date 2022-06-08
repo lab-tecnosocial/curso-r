@@ -1,0 +1,27 @@
+---
+title: "Aplicar"
+output: 
+  github_document:
+    html_preview: false
+---
+
+## Concepto
+
+Una forma más sencilla de hacer repeticiones es con las funciones `apply` y concretamente con la función `lapply()`. 
+
+Esta función recibe como argumentos una colección de elementos (vector o lista) y una función, para luego aplicar la función a cada elemento de la colección, devolviendo si es necesario una lista de resultados.
+
+Por ejemplo, la función `rnorm()` nos devuelve una cantidad de valores aleatorios que le pidamos usando una distribución normal estandarizada:
+
+```{r}
+rnorm(10)
+```
+
+¿Pero que pasa si queremos vectores de 10, 100, 1000, 1000 y 100000 datos? Allí debemos usar un `lapply()`
+```{r}
+cantidades <- c(10, 100, 1000, 10000, 100000)
+rnorm(cantidades) # erroneo
+distribuciones <- lapply(cantidades, rnorm) # correcto
+distribuciones[1] # ver primer elemento
+```
+

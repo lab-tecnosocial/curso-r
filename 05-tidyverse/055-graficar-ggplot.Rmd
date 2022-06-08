@@ -1,24 +1,11 @@
-library(tidyverse)
-data <- read_csv("data/gapminder.csv")
+---
+title: "Graficar con ggplot"
+output: 
+  github_document:
+    html_preview: false
+---
 
-# Contar: count()
-data %>% count(continent)
-data %>% count(year)
-
-# Resumir (colapsar el vector columna en un solo valor): summarize()
-data %>%
-  filter(year == 1952) %>%
-  summarize(mediana_esp_vida = median(lifeExp), media_pib = mean(gdpPercap))
-
-data %>%
-  filter(year == 2007) %>%
-  summarize(media_esp_vida = median(lifeExp))
-
-# Agrupar (para comparar): group_by()
-grupos <- data %>%
-  group_by(year, continent) %>%
-  summarize(mediana_esp = median(lifeExp))
-
+```{r, eval=F}
 # Visualizaciones con ggplot()
 
 # Graficos de lineas: geom_line()
@@ -56,3 +43,5 @@ data %>%
   geom_point() +
   scale_x_log10() +
   facet_wrap(~year)
+```
+

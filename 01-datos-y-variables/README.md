@@ -20,7 +20,7 @@ Una variable es un nombre al que asignamos un valor u objeto. Permite
 almacenarlos y luego referenciarlos para acceder al valor u objeto
 almacenado, usarlo o combinarlo.
 
-![](../pizarras/drawings/variable.png)
+<img src="../pizarras/drawings/variable.png" style="width:50.0%" />
 
 Para ello se debe usar el operador de asignación:
 
@@ -54,7 +54,7 @@ mi_numero_2 <- 66.55
 mi_texto <- "Alex" # fundamental: notese que el texto siempre lleva comillas para diferenciarlo de los nombres de variables y otros símbolos de programación
 
 # Lógico
-mi_logico <- TRUE
+mi_logico <- TRUE # solo se acepta TRUE o FALSE, escritoas de forma abreviada también T y F
 
 # verificar su tipo con la función class()
 class(mi_numero_1)

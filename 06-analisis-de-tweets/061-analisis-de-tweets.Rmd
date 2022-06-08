@@ -5,11 +5,11 @@ output:
     html_preview: false
 ---
 
-# Recolección
+## Recolección
 
 Usaremos el paquete Rtweet:
 
-1. Instalarlo (no autenticarse)
+1. Instalarlo
 2. Buscar tweets con palabras clave
 3. Un dataframe para trabajar
 

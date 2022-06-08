@@ -1,0 +1,53 @@
+---
+title: "Condiciones"
+output: 
+  github_document:
+    html_preview: false
+---
+
+## Concepto
+
+A veces necesitaremos que unas u otras instrucciones se ejecuten en función de si se cumplen ciertas condiciones. Para esto precisamente sirven las "declaraciones condicionales", que hacen uso de expresiones comparativas y lógicas. Su estructura básica es la siguiente:
+
+- Si pasa una condicion: `if(condicion)`
+- Entonces ejecuta este código: `{codigo1}`
+- Sino, entonces este otro: `else {codigo2}`
+
+Es decir:
+
+```{r, eval=F}
+if (condicion) {
+  codigo1
+} else {
+  codigo2
+}
+```
+
+Por ejemplo:
+
+```{r}
+# Número de likes en tu último post de Facebook
+num_likes_post <- 20
+
+# Condición
+if(num_likes_post > 100){
+  print("¡Fuiste popular!") # este código no se ejecuta porque no se cumple la condición
+} else {
+  print("No fuiste popular") # este código sí se ejecuta
+}
+```
+
+## Condición vectorizada
+
+Si tenemos un vector, podemos testear una condición para cada elemento usando la función `ifelse()`,que tiene tres argumentos:
+
+- Condición
+- Resultado si verdadero
+- Resultado si falso
+
+```{r}
+num_likes_semana <- c(10, 40, 120, 40, 33)
+eval_likes_semana <- ifelse(num_likes_semana > 100, "¡Fuiste popular!", "No fuiste popular" )
+print(eval_likes_semana)
+```
+

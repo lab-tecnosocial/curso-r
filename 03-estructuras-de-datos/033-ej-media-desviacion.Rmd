@@ -4,36 +4,83 @@ output:
   github_document:
     html_preview: false
 ---
+## Problemas
+
+Ahora que conoces sobre variables, funciones y vectores puedes realizar los dos siguientes retos.
+
+**Problema 1.** Define una función que devuelve la media de cualquier vector numérico, según la siguiente formula: 
+$$\bar{x} = \frac1n \sum_{i=1}^n x_i$$
+Donde:
+
+- $\bar{x}$ es el simbolo de la media
+- $n$ es la cantidad total de datos o la longitud del vector
+- $\sum_{i=1}^n$ es la sumatoria de todos los elementos de $i$ a $n$
+- $x_i$ es cada elemento de la serie de valores, cada elemento del vector identificado con su indice
+
+En terminos simples, la fórmula solo dice:
+
+- Suma cada uno de los elementos del vector
+- Multiplicalo por 1 dividido por la longitud del vector, lo que es lo mismo que directamente dividirlo por su longitud
+
+**Problema 2.** Define una función que devuelva la desviación estandar de cualquier vector, según la siguiente fórmula:
+
+$$s = \sqrt\frac{\sum_i^n(x_i - \bar{x})^2}{n - 1}$$
+Esta fórmula usa los mismos símbolos ya definidos en la fórmula de la media.
+
+En terminos simples, la fórmula solo dice:
+- Restar a cada elemento la media. Esto para ver cuánto se desvian de ella
+- Elevar al cuadrado cada elemento
+- Sumar los resultados de los elementos anteriores
+- Dividirla entre la cantidad de datos menos uno
+- Finalmente, extraer su raiz cuadrada
+
+> Tip: ten en mente todas las funciones que necesitaras para tu propia función, incluyendo sumatoria, longitud de vectores, operador de potencias. Y necesitarás averiguar la función que sirva para extraer raices cuadradas
+
+## Soluciones
+
+Existen varias formas de resolver estos ejercicios. Aquí van algunas:
 
 ```{r}
-# ejercicio media (paso por paso)
-mi_media <- function(x) {
+# Media con asignaciones de variables intermedias
+mi_media1 <- function(x) {
   suma <- sum(x)
   n <- length(x)
-  return(suma / n)
+  suma / n      # también podría haber sido : return(suma / n)
 }
 
-mi_media2 <- function(num){
-  abs(sum(x) / length(x))
+# Media con funciones anidadas
+mi_media2 <- function(x){
+  sum(x) / length(x)
 }
 
+# Uso
+datos_ejemplo <- c(10, 20, 30, 40, 50)
+mi_media1(datos_ejemplo)
+mi_media2(datos_ejemplo)
+mean(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
+```
 
-# ejercicio desviacion estandar
-desv_estandar <- function(x){
-  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
-}
-
+```{r}
+# Desviación estandar con asignaciones de variables intermedias
 desv_estandar2 <- function(x){
   media <- mean(x)
   n <- length(x) 
-  resta <- x - media
-  cuadrado <- resta ^ 2
-  suma <- sum(cuadrado)
-  div <- suma / (n - 1)
-  resultado <- sqrt(suma)
-  return(resultado)
+  desviaciones <- x - media
+  cuadrados <- desviaciones ^ 2
+  suma <- sum(cuadrados)
+  division <- suma / (n - 1)
+  resultado <- sqrt(division)
+  resultado
 }
 
+# Desviación estandar con funciones anidadas
+desv_estandar1 <- function(x){
+  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
+}
 
+# Uso
+desv_estandar1(datos_ejemplo)
+desv_estandar2(datos_ejemplo)
+sd(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
 ```
 
