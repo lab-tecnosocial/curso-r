@@ -2,7 +2,7 @@
 
 Materiales del curso introductorio de "Programación para análisis de datos con R" dirigido a voluntarios del área social del Lab TecnoSocial 2022.
 
-Para acceder a las lecciones (texto y código) tienes dos alternativas:
+Para acceder a las lecciones (texto explicativo y código) tienes dos alternativas:
 
 - Descargar todo el repositorio como zip o clonarlo con el botón "Code" de arriba y luego hacerlo correr en RStudio
 - Ver los contenidos online ingresando a las carpetas númeradas, donde también están los archivos de código.
