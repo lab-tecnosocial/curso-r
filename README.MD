@@ -1,6 +1,8 @@
-# curso-r
+# Curso R
 
 Materiales del curso introductorio de "Programación para análisis de datos con R" dirigido a voluntarios del área social del Lab TecnoSocial 2022.
+
+Pre-requisitos: Conocimiento elemental de algebra y estadística descriptiva
 
 Para acceder a las lecciones (texto explicativo y código) tienes dos alternativas:
 
