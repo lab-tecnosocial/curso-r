@@ -14,7 +14,7 @@ extieneden la funcionalidad de R.
 
 Los paquetes son un conjunto relacionado de funciones que crean otros
 usuarios de R para resolver problemas específicos, y que podemos buscar,
-instalar, cargar y usar.
+instalar, cargar y usar:
 
 -   Buscar: podemos poner en un buscador las palabras “R package” +
     “tópico”.
@@ -90,8 +90,34 @@ estandar que escribimos anteriormente a la siguiente forma:
 
 ``` r
 library(tidyverse) # cargamos el paquete
-library(magrittr)
+```
 
+    ## ── Attaching packages ───────────────── tidyverse 1.3.1 ──
+
+    ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+    ## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+    ## ✔ tidyr   1.2.0     ✔ forcats 0.5.1
+
+    ## ── Conflicts ──────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+
+``` r
+library(magrittr)
+```
+
+    ## 
+    ## Attaching package: 'magrittr'
+
+    ## The following object is masked from 'package:purrr':
+    ## 
+    ##     set_names
+
+    ## The following object is masked from 'package:tidyr':
+    ## 
+    ##     extract
+
+``` r
 # Datos de ejemplo
 x <- c(10, 20, 30, 40)
 
@@ -145,16 +171,14 @@ library(tidyverse)
 data <- read_csv("../data/gapminder.csv")
 ```
 
+    ## Rows: 1704 Columns: 6
+    ## ── Column specification ──────────────────────────────────
+    ## Delimiter: ","
+    ## chr (2): country, continent
+    ## dbl (4): year, lifeExp, pop, gdpPercap
     ## 
-    ## ── Column specification ────────────────────────────────────────────
-    ## cols(
-    ##   country = col_character(),
-    ##   continent = col_character(),
-    ##   year = col_double(),
-    ##   lifeExp = col_double(),
-    ##   pop = col_double(),
-    ##   gdpPercap = col_double()
-    ## )
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ``` r
 # Ver los datos
@@ -334,19 +358,20 @@ data %>%
 ```
 
     ## # A tibble: 1,704 × 7
-    ##    country     continent  year lifeExp      pop gdpPercap lifeExpMes
-    ##    <chr>       <chr>     <dbl>   <dbl>    <dbl>     <dbl>      <dbl>
-    ##  1 Afghanistan Asia       1952    28.8  8425333      779.       346.
-    ##  2 Afghanistan Asia       1957    30.3  9240934      821.       364.
-    ##  3 Afghanistan Asia       1962    32.0 10267083      853.       384.
-    ##  4 Afghanistan Asia       1967    34.0 11537966      836.       408.
-    ##  5 Afghanistan Asia       1972    36.1 13079460      740.       433.
-    ##  6 Afghanistan Asia       1977    38.4 14880372      786.       461.
-    ##  7 Afghanistan Asia       1982    39.9 12881816      978.       478.
-    ##  8 Afghanistan Asia       1987    40.8 13867957      852.       490.
-    ##  9 Afghanistan Asia       1992    41.7 16317921      649.       500.
-    ## 10 Afghanistan Asia       1997    41.8 22227415      635.       501.
-    ## # … with 1,694 more rows
+    ##    country     continent  year lifeExp      pop gdpPercap
+    ##    <chr>       <chr>     <dbl>   <dbl>    <dbl>     <dbl>
+    ##  1 Afghanistan Asia       1952    28.8  8425333      779.
+    ##  2 Afghanistan Asia       1957    30.3  9240934      821.
+    ##  3 Afghanistan Asia       1962    32.0 10267083      853.
+    ##  4 Afghanistan Asia       1967    34.0 11537966      836.
+    ##  5 Afghanistan Asia       1972    36.1 13079460      740.
+    ##  6 Afghanistan Asia       1977    38.4 14880372      786.
+    ##  7 Afghanistan Asia       1982    39.9 12881816      978.
+    ##  8 Afghanistan Asia       1987    40.8 13867957      852.
+    ##  9 Afghanistan Asia       1992    41.7 16317921      649.
+    ## 10 Afghanistan Asia       1997    41.8 22227415      635.
+    ## # … with 1,694 more rows, and 1 more variable:
+    ## #   lifeExpMes <dbl>
 
 También podemos agregar varias columnas al mismo tiempo. Y si queremos
 que los cambios se guarden en la tabla original, la debemos
@@ -359,19 +384,20 @@ data
 ```
 
     ## # A tibble: 1,704 × 8
-    ##    country     continent  year lifeExp      pop gdpPercap lifeExpMes
-    ##    <chr>       <chr>     <dbl>   <dbl>    <dbl>     <dbl>      <dbl>
-    ##  1 Afghanistan Asia       1952    28.8  8425333      779.       346.
-    ##  2 Afghanistan Asia       1957    30.3  9240934      821.       364.
-    ##  3 Afghanistan Asia       1962    32.0 10267083      853.       384.
-    ##  4 Afghanistan Asia       1967    34.0 11537966      836.       408.
-    ##  5 Afghanistan Asia       1972    36.1 13079460      740.       433.
-    ##  6 Afghanistan Asia       1977    38.4 14880372      786.       461.
-    ##  7 Afghanistan Asia       1982    39.9 12881816      978.       478.
-    ##  8 Afghanistan Asia       1987    40.8 13867957      852.       490.
-    ##  9 Afghanistan Asia       1992    41.7 16317921      649.       500.
-    ## 10 Afghanistan Asia       1997    41.8 22227415      635.       501.
-    ## # … with 1,694 more rows, and 1 more variable: popMillon <dbl>
+    ##    country     continent  year lifeExp      pop gdpPercap
+    ##    <chr>       <chr>     <dbl>   <dbl>    <dbl>     <dbl>
+    ##  1 Afghanistan Asia       1952    28.8  8425333      779.
+    ##  2 Afghanistan Asia       1957    30.3  9240934      821.
+    ##  3 Afghanistan Asia       1962    32.0 10267083      853.
+    ##  4 Afghanistan Asia       1967    34.0 11537966      836.
+    ##  5 Afghanistan Asia       1972    36.1 13079460      740.
+    ##  6 Afghanistan Asia       1977    38.4 14880372      786.
+    ##  7 Afghanistan Asia       1982    39.9 12881816      978.
+    ##  8 Afghanistan Asia       1987    40.8 13867957      852.
+    ##  9 Afghanistan Asia       1992    41.7 16317921      649.
+    ## 10 Afghanistan Asia       1997    41.8 22227415      635.
+    ## # … with 1,694 more rows, and 2 more variables:
+    ## #   lifeExpMes <dbl>, popMillon <dbl>
 
 # Agrupar
 
@@ -407,8 +433,8 @@ data %>%
   summarize(mediana_esp = median(lifeExp))
 ```
 
-    ## `summarise()` has grouped output by 'continent'. You can override
-    ## using the `.groups` argument.
+    ## `summarise()` has grouped output by 'continent'. You can
+    ## override using the `.groups` argument.
 
     ## # A tibble: 60 × 3
     ## # Groups:   continent [5]
@@ -490,8 +516,8 @@ grupos <- data %>%
   summarize(mediana_esp = median(lifeExp))
 ```
 
-    ## `summarise()` has grouped output by 'continent'. You can override
-    ## using the `.groups` argument.
+    ## `summarise()` has grouped output by 'continent'. You can
+    ## override using the `.groups` argument.
 
 ``` r
 grupos %>%
@@ -529,3 +555,8 @@ data %>%
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control)
+\| [Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-tweets)

@@ -84,4 +84,5 @@ data %>%
   facet_wrap(~year)
 ```
 
+[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control) | [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-tweets)
 

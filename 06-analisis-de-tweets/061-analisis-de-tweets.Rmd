@@ -62,4 +62,4 @@ conteo <- palabras %>%
 conteo
 ```
 
-
+[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/05-tidyverse)

@@ -3,20 +3,54 @@ R como interprete
 
 ## ¿Qué es R?
 
-R es un sistema para la estadística computacional. Pero es mejor
-entenderlo tanto como un lenguaje de programación y un interprete que
-traduce ese lenguaje a operaciones computacionales útiles sobre datos.
+R es un sistema para la estadística computacional. Pero es más sencillo
+entenderlo como un lenguaje de programación y un interprete que traduce
+ese lenguaje a operaciones computacionales útiles sobre datos.
 
 ![](../pizarras/drawings/comunicacion-con-R.png) Es decir que para
-comunicarte con R debes usar un “código” escrito en R.
+comunicarte con R debes escribir en “código”.
+
+## Instalar R y RStudio
+
+-   R, que es el software base: <https://cloud.r-project.org/>
+-   RStudio, que es el editor de código:
+    <https://www.rstudio.com/products/rstudio/download/>
+
+RStudio tiene las siguientes partes principales:
+
+![](../pizarras/drawings/rstudio.png)
+
+-   Editor de texto: Donde podemos abrir nuestros archivos de R (`.R` y
+    `.Rmd`) y escribir varias lineas de código, para luego ejecutarlo ya
+    sea por linea, bloque o archivo entero. Toma atención al botón ‘Run’
+    y ‘Source’.
+-   Consola: Donde podemos escribir código de forma interactiva (comando
+    y respuesta inmediata) o ver las salidas de nuestro código del
+    editor de texto.
+-   Entorno: Donde veremos los objetos de R que están disponibles en
+    memoria: variables, tablas de datos, funciones, etc.
+-   Archivos/Gráficos: Donde podemos ver los archivos que existen en
+    nuestro proyecto y los gráficos, entre otros.
+
+Siempre que trabajemos con R es clave que creemos “Proyectos” en
+RStudio:
+
+-   Un “Proyecto” no es más que una carpeta donde podemos crear varios
+    archivos de R, datos, documentación y guardar salidas, que además
+    facilita que sean accesibles para nuestros programas en R.
+-   Para crearlo ve a: File \> New Project, escoge un directorio y dale
+    un nombre
+-   Una vez creado el proyecto, el punto de partida es crear tú primer
+    archivo de R. Para ello: File \> New File \> R Script
+-   En un R Script ya puedes escribir código en R
 
 ## Evaluación
 
 R espera tus instrucciones. Pero solo puedes comunicarte bien con él de
 forma escrita a traves del lenguaje de R, que tiene su propia semántica,
 sintaxis y hasta pragmática. Las interfaces gráficas (GUI) con sus menus
-e iconos no son tan expresivas como escribir comandos de texto en
-consolas (CLI) o editores de texto.
+e iconos no son tan expresivas como escribir en editores de texto o en
+consolas (CLI).
 
 Al proceso de “interpretación” de lo que le digas textualmente a R se lo
 conoce como “evaluación”. Si cumples con las reglas de semántica y
@@ -58,7 +92,7 @@ comentarios. Se marcan con un simbolo de `#`.
 ``` r
 # este comentario no se evalua, pero sirve para hacer anotaciones para uno mismo o para otros
 
-sum(2, 2) # puedo anotar el proposito de esta expresión: esta linea de codigo suma dos más dos
+sum(2, 2) # esta linea de codigo suma dos más dos
 ```
 
     ## [1] 4
@@ -67,9 +101,8 @@ sum(2, 2) # puedo anotar el proposito de esta expresión: esta linea de codigo s
 
 Normalmente escribiras muchas expresiones, declaraciones, funciones y
 variables combinadas en un solo archivo, que será una especie de “guión”
-(script) que R deberá ejecutar, linea por linea. Estos archivos
-normalmente se ejecutan de arriba hacía abajo secuencialmente, por
-ejemplo:
+(script) que R deberá ejecutar. Estos archivos normalmente se ejecutan
+de arriba hacía abajo secuencialmente, por ejemplo:
 
 ``` r
 primer_parcial <- 55 # asigna un valor a una variable
@@ -88,3 +121,6 @@ interpretará.
 ## Referencias
 
 -   <https://cran.r-project.org/doc/manuals/r-devel/R-lang.html>
+
+[Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/01-datos-y-variables)

@@ -3,9 +3,9 @@ Datos y variables
 
 ## R como una calculadora
 
-Inicialmente, puedes usar R como una calculadora.Puedes usar varias
-operaciones aritméticas, incluidas la adición, sustracción,
-multiplicación, división, exponenciación y módulo:
+Inicialmente, puedes usar R como una calculadora.Usar varias operaciones
+aritméticas, incluidas la adición, sustracción, multiplicación,
+división, exponenciación y módulo:
 
 -   Adición:`+`
 -   Sustracción: `-`
@@ -24,7 +24,7 @@ almacenado, usarlo o combinarlo.
 
 Para ello se debe usar el operador de asignación:
 
-> Operador de asignación: `<-`
+> `<-`
 
 ``` r
 mis_platanos <- 5
@@ -116,3 +116,8 @@ paste("Mi nombre es", mi_texto)
 
 > Ejercicio: Calcular el descuento de salario mensual pero esta vez
 > imprimiendo los resultados con información contextual útil
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/00-R-como-interprete)
+\| [Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/02-funciones)

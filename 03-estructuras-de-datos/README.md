@@ -184,22 +184,25 @@ mi_vector <- 1:20
 mi_vector > 10
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-    ## [11]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [10] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+    ## [19]  TRUE  TRUE
 
 ``` r
 mi_vector >= 5 & mi_vector <= 15
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-    ## [11]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+    ##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+    ## [10]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+    ## [19] FALSE FALSE
 
 ``` r
 mi_vector == 10 | mi_vector == 20
 ```
 
-    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
-    ## [11] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+    ##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [10]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+    ## [19] FALSE  TRUE
 
 ``` r
 # filtrar (pasamos la expresión dentro de los corchetes)
@@ -328,14 +331,23 @@ los dos siguientes retos.
 
 **Problema 1.** Define una función que devuelve la media de cualquier
 vector numérico, según la siguiente formula:
-$$\\bar{x} = \\frac1n \\sum\_{i=1}^n x_i$$
+
+![\\bar{x} = \\frac1n \\sum\_{i=1}^n x_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbar%7Bx%7D%20%3D%20%5Cfrac1n%20%5Csum_%7Bi%3D1%7D%5En%20x_i "\bar{x} = \frac1n \sum_{i=1}^n x_i")
+
 Donde:
 
--   *x̄* es el simbolo de la media
--   *n* es la cantidad total de datos o la longitud del vector
--   $\\sum\_{i=1}^n$ es la sumatoria de todos los elementos de *i* a *n*
--   *x*<sub>*i*</sub> es cada elemento de la serie de valores, cada
-    elemento del vector identificado con su indice
+-   ![\\bar{x}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cbar%7Bx%7D "\bar{x}")
+    es el simbolo de la media
+-   ![n](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n "n")
+    es la cantidad total de datos o la longitud del vector
+-   ![\\sum\_{i=1}^n](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Csum_%7Bi%3D1%7D%5En "\sum_{i=1}^n")
+    es la sumatoria de todos los elementos de
+    ![i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;i "i")
+    a
+    ![n](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;n "n")
+-   ![x_i](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;x_i "x_i")
+    es cada elemento de la serie de valores, cada elemento del vector
+    identificado con su indice
 
 En terminos simples, la fórmula solo dice:
 
@@ -346,7 +358,8 @@ En terminos simples, la fórmula solo dice:
 **Problema 2.** Define una función que devuelva la desviación estandar
 de cualquier vector, según la siguiente fórmula:
 
-$$s = \\sqrt\\frac{\\sum_i^n(x_i - \\bar{x})^2}{n - 1}$$
+![s = \\sqrt\\frac{\\sum_i^n(x_i - \\bar{x})^2}{n - 1}](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;s%20%3D%20%5Csqrt%5Cfrac%7B%5Csum_i%5En%28x_i%20-%20%5Cbar%7Bx%7D%29%5E2%7D%7Bn%20-%201%7D "s = \sqrt\frac{\sum_i^n(x_i - \bar{x})^2}{n - 1}")
+
 Esta fórmula usa los mismos símbolos ya definidos en la fórmula de la
 media.
 
@@ -644,7 +657,8 @@ summary(tabla$sexo_factor)
 print(tabla$gusto_universidad)
 ```
 
-    ## [1] "Pues no me parece tan bien.." "algo jejeje"                 
+    ## [1] "Pues no me parece tan bien.."
+    ## [2] "algo jejeje"                 
     ## [3] "como q si"
 
 # Leer y escribir datos
@@ -864,3 +878,8 @@ mi_lista$mat
     ## [1,]    1    4    7
     ## [2,]    2    5    8
     ## [3,]    3    6    9
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/02-funciones)
+\| [Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control)

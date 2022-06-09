@@ -6,7 +6,7 @@ Pre-requisitos: Conocimiento elemental de algebra y estadística descriptiva
 
 Para acceder a las lecciones (texto explicativo y código) tienes dos alternativas:
 
-- Descargar todo el repositorio como zip o clonarlo con el botón "Code" de arriba y luego hacerlo correr en RStudio
+- Descargar todo el repositorio como zip o clonarlo con el botón "Code" de arriba y luego hacerlo correr en [RStudio](https://www.rstudio.com/products/rstudio/download/)
 - Ver los contenidos online ingresando a las carpetas númeradas, donde también están los archivos de código.
 
 Contenidos online:

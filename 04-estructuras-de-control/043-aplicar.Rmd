@@ -25,3 +25,4 @@ distribuciones <- lapply(cantidades, rnorm) # correcto
 distribuciones[1] # ver primer elemento
 ```
 
+[<< Anterior ](https://github.com/lab-tecnosocial/curso-r/tree/main/03-estructuras-de-datos)| [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/05-tidyverse)

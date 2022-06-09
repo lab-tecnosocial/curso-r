@@ -10,7 +10,7 @@ output:
 A veces necesitaremos que unas u otras instrucciones se ejecuten en función de si se cumplen ciertas condiciones. Para esto precisamente sirven las "declaraciones condicionales", que hacen uso de expresiones comparativas y lógicas. Su estructura básica es la siguiente:
 
 - Si pasa una condicion: `if(condicion)`
-- Entonces ejecuta este código: `{codigo1}`
+- Entonces ejecuta este código entre llaves: `{codigo1}`
 - Sino, entonces este otro: `else {codigo2}`
 
 Es decir:

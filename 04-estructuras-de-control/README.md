@@ -11,7 +11,7 @@ sirven las “declaraciones condicionales”, que hacen uso de expresiones
 comparativas y lógicas. Su estructura básica es la siguiente:
 
 -   Si pasa una condicion: `if(condicion)`
--   Entonces ejecuta este código: `{codigo1}`
+-   Entonces ejecuta este código entre llaves: `{codigo1}`
 -   Sino, entonces este otro: `else {codigo2}`
 
 Es decir:
@@ -55,14 +55,15 @@ eval_likes_semana <- ifelse(num_likes_semana > 100, "¡Fuiste popular!", "No fui
 print(eval_likes_semana)
 ```
 
-    ## [1] "No fuiste popular" "No fuiste popular" "¡Fuiste popular!" 
-    ## [4] "No fuiste popular" "No fuiste popular"
+    ## [1] "No fuiste popular" "No fuiste popular"
+    ## [3] "¡Fuiste popular!"  "No fuiste popular"
+    ## [5] "No fuiste popular"
 
 # Bucles
 
 ## Concepto
 
-En muchas ocasiones vamos a querer repetir ciertas operaciones sobre
+En muchas ocasiones vamos a querer repetir ciertas instrucciones sobre
 unos mismos datos (vectores o listas). Para ese necesitaremos los
 **bucles** (*loops*).
 
@@ -103,8 +104,7 @@ siguiente:
     ## [1]  4  6 10 12 14
 
 Además existe la alternativa de usar las repeticiones de forma más
-comoda que los bucles con `lapply()` (ver siguiente documento). \#
-Aplicar
+comoda que los bucles con `lapply()`. \# Aplicar
 
 ## Concepto
 
@@ -122,8 +122,9 @@ aleatorios que le pidamos usando una distribución normal estandarizada:
 rnorm(10)
 ```
 
-    ##  [1]  1.32981078  1.33455781 -0.20575086  0.22404366 -0.09050413
-    ##  [6]  1.81376342  0.46908918 -0.16180846 -0.62436291 -0.13244922
+    ##  [1] -0.5309304 -1.3257381 -0.2271618 -0.2035612
+    ##  [5] -2.4228992  0.2468577  1.8314894 -0.2890300
+    ##  [9] -0.4639184  0.3756235
 
 ¿Pero que pasa si queremos vectores de 10, 100, 1000, 1000 y 100000
 datos? Allí debemos usar un `lapply()`
@@ -133,7 +134,7 @@ cantidades <- c(10, 100, 1000, 10000, 100000)
 rnorm(cantidades) # erroneo
 ```
 
-    ## [1] -0.7636091 -0.5059729  0.3047913 -0.8888318  0.3171105
+    ## [1] -0.4029237 -1.0253264 -0.4590764  0.5284774 -0.4789760
 
 ``` r
 distribuciones <- lapply(cantidades, rnorm) # correcto
@@ -141,5 +142,11 @@ distribuciones[1] # ver primer elemento
 ```
 
     ## [[1]]
-    ##  [1] -1.05250042 -0.11559391 -0.06199999  1.62203084  0.01833968
-    ##  [6]  1.11521345 -0.03879365  2.00712168 -0.92692718  1.36953045
+    ##  [1]  1.26676878  0.19850811 -0.59638336  1.26491170
+    ##  [5] -0.91473645 -1.81287878 -0.79278268 -0.07588222
+    ##  [9] -0.83483437 -0.36016231
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/03-estructuras-de-datos)\|
+[Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/05-tidyverse)

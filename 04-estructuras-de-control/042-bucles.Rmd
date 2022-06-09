@@ -7,7 +7,7 @@ output:
 
 ## Concepto
 
-En muchas ocasiones vamos a querer repetir ciertas operaciones sobre unos mismos datos (vectores o listas). Para ese necesitaremos los **bucles** (*loops*).
+En muchas ocasiones vamos a querer repetir ciertas instrucciones sobre unos mismos datos (vectores o listas). Para ese necesitaremos los **bucles** (*loops*).
 
 El bucle más común es el bucle definido `for in`, donde:
 
@@ -33,4 +33,4 @@ Podemos obtener un resultado similar al anterior simplement con lo siguiente:
 2 + numeros
 ```
 
-Además existe la alternativa de usar las repeticiones de forma más comoda que los bucles con `lapply()` (ver siguiente documento).
+Además existe la alternativa de usar las repeticiones de forma más comoda que los bucles con `lapply()`.

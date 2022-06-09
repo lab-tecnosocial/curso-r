@@ -11,7 +11,7 @@ Como vimos hasta ahora, crear funciones tiene su complejidad. Pero en muchas oca
 
 ![](../pizarras/drawings/paquetes.png){width=50%}
 
-Los paquetes son un conjunto relacionado de funciones que crean otros usuarios de R para resolver problemas específicos, y que podemos buscar, instalar, cargar y usar.
+Los paquetes son un conjunto relacionado de funciones que crean otros usuarios de R para resolver problemas específicos, y que podemos buscar, instalar, cargar y usar:
 
 - Buscar: podemos poner en un buscador las palabras "R package" + "tópico".
 - Una vez encontrado el paquete de interés podemos instalarlo directamente desde R con la función `install.packages()` que recibe el nombre del paquete como caracter (en comillas)

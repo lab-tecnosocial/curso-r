@@ -18,6 +18,16 @@ Cargar:
 ``` r
 library(tidyverse)
 library(rtweet)
+```
+
+    ## 
+    ## Attaching package: 'rtweet'
+
+    ## The following object is masked from 'package:purrr':
+    ## 
+    ##     flatten
+
+``` r
 library(tidytext)
 ```
 
@@ -34,25 +44,25 @@ tweets
 ```
 
     ## # A tibble: 44 × 90
-    ##    user_id    status_id created_at          screen_name text  source
-    ##    <chr>      <chr>     <dttm>              <chr>       <chr> <chr> 
-    ##  1 x60636401  x1534382… 2022-06-08 03:49:23 SSBATC      "Bol… Twitt…
-    ##  2 x13938719… x1534372… 2022-06-08 03:12:00 TripCandy   "Tuc… Twitt…
-    ##  3 x14277772… x1534142… 2022-06-07 11:57:48 Yosoy20212  "🙏…  Twitt…
-    ##  4 x14277772… x1534142… 2022-06-07 11:57:12 Yosoy20212  "🙏…  Twitt…
-    ##  5 x14277772… x1534141… 2022-06-07 11:55:08 Yosoy20212  "🙏…  Twitt…
-    ##  6 x14277772… x1534139… 2022-06-07 11:46:47 Yosoy20212  "🙏…  Twitt…
-    ##  7 x14277772… x1534139… 2022-06-07 11:46:01 Yosoy20212  "🙏…  Twitt…
-    ##  8 x14277772… x1534139… 2022-06-07 11:45:44 Yosoy20212  "🙏…  Twitt…
-    ##  9 x14277772… x1534139… 2022-06-07 11:44:43 Yosoy20212  "🙏…  Twitt…
-    ## 10 x14277772… x1534139… 2022-06-07 11:44:05 Yosoy20212  "🙏…  Twitt…
-    ## # … with 34 more rows, and 84 more variables:
-    ## #   display_text_width <dbl>, reply_to_status_id <chr>,
-    ## #   reply_to_user_id <chr>, reply_to_screen_name <chr>,
-    ## #   is_quote <lgl>, is_retweet <lgl>, favorite_count <dbl>,
-    ## #   retweet_count <dbl>, quote_count <lgl>, reply_count <lgl>,
-    ## #   hashtags <chr>, symbols <lgl>, urls_url <chr>, urls_t.co <chr>,
-    ## #   urls_expanded_url <chr>, media_url <chr>, media_t.co <chr>, …
+    ##    user_id status_id created_at          screen_name text 
+    ##    <chr>   <chr>     <dttm>              <chr>       <chr>
+    ##  1 xx6063… xx153438… 2022-06-08 03:49:23 SSBATC      "Bol…
+    ##  2 xx1393… xx153437… 2022-06-08 03:12:00 TripCandy   "Tuc…
+    ##  3 xx1427… xx153414… 2022-06-07 11:57:48 Yosoy20212  "🙏… 
+    ##  4 xx1427… xx153414… 2022-06-07 11:57:12 Yosoy20212  "🙏… 
+    ##  5 xx1427… xx153414… 2022-06-07 11:55:08 Yosoy20212  "🙏… 
+    ##  6 xx1427… xx153413… 2022-06-07 11:46:47 Yosoy20212  "🙏… 
+    ##  7 xx1427… xx153413… 2022-06-07 11:46:01 Yosoy20212  "🙏… 
+    ##  8 xx1427… xx153413… 2022-06-07 11:45:44 Yosoy20212  "🙏… 
+    ##  9 xx1427… xx153413… 2022-06-07 11:44:43 Yosoy20212  "🙏… 
+    ## 10 xx1427… xx153413… 2022-06-07 11:44:05 Yosoy20212  "🙏… 
+    ## # … with 34 more rows, and 85 more variables:
+    ## #   source <chr>, display_text_width <dbl>,
+    ## #   reply_to_status_id <chr>, reply_to_user_id <chr>,
+    ## #   reply_to_screen_name <chr>, is_quote <lgl>,
+    ## #   is_retweet <lgl>, favorite_count <dbl>,
+    ## #   retweet_count <dbl>, quote_count <lgl>,
+    ## #   reply_count <lgl>, hashtags <chr>, symbols <lgl>, …
 
 Guardar los datos:
 
@@ -92,3 +102,6 @@ conteo
     ##  9 ethereum     35
     ## 10 méxico       35
     ## # … with 234 more rows
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/05-tidyverse)
