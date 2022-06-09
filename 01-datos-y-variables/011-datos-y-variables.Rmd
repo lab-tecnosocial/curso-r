@@ -81,4 +81,4 @@ paste("Mi nombre es", mi_texto)
 
 > Ejercicio: Calcular el descuento de salario mensual pero esta vez imprimiendo los resultados con información contextual útil
 
-[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/00-R-como-interprete) | [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/02-funciones)
+[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/00-R-como-interprete)   |   [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/02-funciones)
