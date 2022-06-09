@@ -90,34 +90,8 @@ estandar que escribimos anteriormente a la siguiente forma:
 
 ``` r
 library(tidyverse) # cargamos el paquete
-```
-
-    ## ── Attaching packages ───────────────── tidyverse 1.3.1 ──
-
-    ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-    ## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
-    ## ✔ tidyr   1.2.0     ✔ forcats 0.5.1
-
-    ## ── Conflicts ──────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
-
-``` r
 library(magrittr)
-```
 
-    ## 
-    ## Attaching package: 'magrittr'
-
-    ## The following object is masked from 'package:purrr':
-    ## 
-    ##     set_names
-
-    ## The following object is masked from 'package:tidyr':
-    ## 
-    ##     extract
-
-``` r
 # Datos de ejemplo
 x <- c(10, 20, 30, 40)
 

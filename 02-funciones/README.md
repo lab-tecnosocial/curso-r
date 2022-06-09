@@ -237,3 +237,8 @@ imc(peso = 87, altura = 1.72) # con argumentados nombrados
 ```
 
     ## [1] 29.40779
+
+[\<\<
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/01-datos-y-variables)
+\| [Siguiente
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/03-estructuras-de-datos)

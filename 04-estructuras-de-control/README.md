@@ -122,9 +122,9 @@ aleatorios que le pidamos usando una distribución normal estandarizada:
 rnorm(10)
 ```
 
-    ##  [1] -0.5309304 -1.3257381 -0.2271618 -0.2035612
-    ##  [5] -2.4228992  0.2468577  1.8314894 -0.2890300
-    ##  [9] -0.4639184  0.3756235
+    ##  [1]  0.28591347 -0.22489487 -0.28986522  0.53538761
+    ##  [5]  0.74893463 -0.28802949 -0.07100347  0.53617177
+    ##  [9] -1.20066579  1.84883867
 
 ¿Pero que pasa si queremos vectores de 10, 100, 1000, 1000 y 100000
 datos? Allí debemos usar un `lapply()`
@@ -134,7 +134,7 @@ cantidades <- c(10, 100, 1000, 10000, 100000)
 rnorm(cantidades) # erroneo
 ```
 
-    ## [1] -0.4029237 -1.0253264 -0.4590764  0.5284774 -0.4789760
+    ## [1] -1.7593017  0.5380493 -0.1165111  1.3473311 -0.3706379
 
 ``` r
 distribuciones <- lapply(cantidades, rnorm) # correcto
@@ -142,11 +142,11 @@ distribuciones[1] # ver primer elemento
 ```
 
     ## [[1]]
-    ##  [1]  1.26676878  0.19850811 -0.59638336  1.26491170
-    ##  [5] -0.91473645 -1.81287878 -0.79278268 -0.07588222
-    ##  [9] -0.83483437 -0.36016231
+    ##  [1]  0.03387604  0.73006186 -0.16234087 -0.64978495
+    ##  [5] -1.57308171  0.31455203 -1.58566395 -2.69868216
+    ##  [9]  0.68695630  0.06950792
 
 [\<\<
-Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/03-estructuras-de-datos)\|
-[Siguiente
+Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/03-estructuras-de-datos)
+\| [Siguiente
 \>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/05-tidyverse)
