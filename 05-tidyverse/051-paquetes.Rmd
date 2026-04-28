@@ -20,7 +20,7 @@ Los paquetes son un conjunto relacionado de funciones que crean otros usuarios d
 
 Esto hace que R no solo sea un programa aislado más, sino que también es un ecosistema de paquetes y comunidades de usuarios que extienden la funcionalidad de R. En el futuro tú mismo puedes contribuir con tus propios paquetes.
 
-Daremos dos ejemplos de uso de paquetes. Primero con `tidyverse` para hacer transformación, análisis y visualizaciones de datos con funciones modernas y legibles, y luego con el paquete `rtweet` para recolectar datos de Twitter.
+Daremos varios ejemplos de uso de paquetes. Primero con `tidyverse` para hacer transformación, análisis y visualizaciones de datos con funciones modernas y legibles.
 
 ## Tidyverse
 
@@ -49,30 +49,27 @@ Dentro de tidyverse hay varios paquetes que nos serviran para los procedimientos
 
 Tidyverse, para lograr mayor expresibidad y legibilidad, sigue dos principios:
 
-- en los procedimientos, en vez de usar variables intermedias o el anidamiento de funciones, se privilegia el uso de una secuencia apoyada en "tuberias" (*pipes*) que se representan con el símbolo `%>%` y que hace que los datos fluyan de arriba hacía abajo
-- se usan verbos de acción en sus funciones, que se pueden encadenar con los "pipes" 
+- en los procedimientos, en vez de usar variables intermedias o el anidamiento de funciones, se privilegia el uso de una secuencia apoyada en "tuberías" (*pipes*) que se representan con el símbolo `|>` y que hace que los datos fluyan de arriba hacía abajo
+- se usan verbos de acción en sus funciones, que se pueden encadenar con los "pipes"
 
-Por ejemplo, podemos reescribir la función aninada de la desviación estandar que escribimos anteriormente a la siguiente forma:
+> **Nota histórica:** Antes de R 4.1 (2021), se usaba el pipe `%>%` del paquete `magrittr`. Hoy R incluye el pipe `|>` de forma nativa, sin necesidad de instalar nada extra. Si ves `%>%` en tutoriales o código antiguo, funciona igual.
+
+Por ejemplo, comparemos cómo se escribe el mismo análisis con y sin pipes:
 
 ```{r}
 library(tidyverse) # cargamos el paquete
-library(magrittr)
 
-# Datos de ejemplo
-x <- c(10, 20, 30, 40)
+data <- read_csv("../data/gapminder.csv")
 
-# Con anidamiento de funciones
-sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
+# Sin pipes: funciones anidadas, dificil de leer de izquierda a derecha
+arrange(filter(data, continent == "Americas"), desc(lifeExp))
 
-# Con pipes
-x %>%
-  subtract(mean(x)) %>%
-  raise_to_power(2) %>%
-  sum() %>%
-  divide_by(length(x) - 1) %>%
-  sqrt()
+# Con el pipe nativo |>: las operaciones van de arriba hacia abajo
+data |>
+  filter(continent == "Americas") |>
+  arrange(desc(lifeExp))
 ```
 
-En el anidamiento de funciones las operaciones van de adentro hacía afuera, que es algo dificil de seguir para los humanos. En la versión con pipes, la operaciones van de arriba hacía abajo y son más fáciles de seguir, pero es necesario usar el operador del pipe para pasar el resultado del paso previo al siguiente.
+En el anidamiento de funciones las operaciones van de adentro hacía afuera, que es algo difícil de seguir para los humanos. En la versión con pipes, las operaciones van de arriba hacía abajo y son más fáciles de leer, pero es necesario usar el operador del pipe para pasar el resultado del paso previo al siguiente.
 
 

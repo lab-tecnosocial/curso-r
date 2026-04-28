@@ -1,0 +1,94 @@
+---
+title: "Ordenar y reshapear datos con tidyr"
+output:
+  github_document:
+    html_preview: false
+---
+
+El paquete `tidyr` (parte de `tidyverse`) sirve para transformar la **forma** de los datos: convertir tablas anchas a largas, tablas largas a anchas, y separar o unir columnas. Estas transformaciones son clave porque muchos datasets llegan en formatos que no son "tidy".
+
+```{r}
+library(tidyverse)
+```
+
+## Datos anchos vs. datos largos
+
+Imaginemos que tenemos una tabla con la esperanza de vida de tres países en distintos años, en formato **ancho** (cada año es una columna):
+
+```{r}
+datos_anchos <- tibble(
+  pais = c("Bolivia", "Argentina", "Brasil"),
+  `1997` = c(62.0, 73.3, 69.4),
+  `2002` = c(63.9, 74.3, 71.0),
+  `2007` = c(65.6, 75.3, 72.4)
+)
+datos_anchos
+```
+
+Este formato es cómodo para leer a ojo, pero difícil de analizar o graficar en R porque cada año debería ser un valor en una columna `year`, no una columna separada.
+
+## `pivot_longer()`: de ancho a largo
+
+```{r}
+datos_largos <- datos_anchos |>
+  pivot_longer(
+    cols = `1997`:`2007`,   # columnas a convertir
+    names_to = "year",      # nombre de la nueva columna con los nombres anteriores
+    values_to = "lifeExp"   # nombre de la nueva columna con los valores
+  )
+datos_largos
+```
+
+Ahora sí podemos graficar fácilmente:
+
+```{r}
+datos_largos |>
+  ggplot(aes(x = year, y = lifeExp, color = pais, group = pais)) +
+  geom_line() +
+  geom_point()
+```
+
+## `pivot_wider()`: de largo a ancho
+
+La operación inversa sirve para crear tablas de resumen legibles:
+
+```{r}
+datos_largos |>
+  pivot_wider(
+    names_from = year,
+    values_from = lifeExp
+  )
+```
+
+## `separate()`: separar una columna en dos
+
+A veces una columna contiene dos datos pegados (por ejemplo `"Bolivia_1997"`). Con `separate()` podemos dividirla:
+
+```{r}
+datos_combinados <- tibble(
+  pais_año = c("Bolivia_1997", "Bolivia_2002", "Argentina_1997", "Argentina_2002"),
+  lifeExp = c(62.0, 63.9, 73.3, 74.3)
+)
+
+datos_combinados |>
+  separate(pais_año, into = c("pais", "year"), sep = "_")
+```
+
+## `unite()`: unir dos columnas en una
+
+La operación inversa de `separate()`:
+
+```{r}
+datos_largos |>
+  unite("pais_year", pais, year, sep = "-")
+```
+
+## Ejercicio
+
+Con el dataset `gapminder`, filtra solo los países de América (`continent == "Americas"`) y los años 1997, 2002 y 2007. Luego usa `pivot_wider()` para crear una tabla donde cada año sea una columna y cada fila sea un país, mostrando la esperanza de vida (`lifeExp`).
+
+```{r, eval=F}
+data <- read_csv("../data/gapminder.csv")
+
+# Tu código aquí
+```

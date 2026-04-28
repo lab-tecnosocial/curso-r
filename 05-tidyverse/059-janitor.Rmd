@@ -1,0 +1,100 @@
+---
+title: "Limpieza de datos con janitor"
+output:
+  github_document:
+    html_preview: false
+---
+
+El paquete `janitor` no es parte del tidyverse estrictamente, pero se integra perfectamente con él. Su función principal es **limpiar** datos que llegan sucios, especialmente desde Excel: nombres de columnas inconsistentes, filas vacías, duplicados, etc.
+
+```{r, eval=F}
+install.packages("janitor")
+```
+
+```{r, message=F}
+library(tidyverse)
+library(janitor)
+```
+
+## `clean_names()`: limpiar nombres de columnas
+
+Es muy común recibir datos desde Excel o encuestas con nombres de columnas problemáticos: espacios, mayúsculas, tildes, caracteres especiales. `clean_names()` los convierte automáticamente a un formato limpio (`snake_case`):
+
+```{r}
+# Simulamos una tabla con nombres "sucios" típicos de Excel
+datos_sucios <- tibble(
+  `Nombre Completo` = c("Ana López", "Carlos Mamani", "Rosa Quispe"),
+  `Edad (años)` = c(28, 34, 45),
+  `Nivel Educativo` = c("Universitario", "Secundario", "Primario"),
+  `Ingreso Mensual Bs.` = c(3500, 2800, 1900)
+)
+
+datos_sucios
+```
+
+```{r}
+# Después de clean_names()
+datos_limpios <- datos_sucios |> clean_names()
+datos_limpios
+```
+
+Ahora los nombres son accesibles sin comillas y sin problemas de caracteres especiales.
+
+## `tabyl()`: tablas de frecuencia
+
+`tabyl()` es una alternativa más potente y legible que `table()` para crear tablas de frecuencia:
+
+```{r}
+encuestados <- tibble(
+  departamento = c("La Paz", "Santa Cruz", "La Paz", "Cochabamba", "Santa Cruz",
+                   "La Paz", "Tarija", "Cochabamba", "Santa Cruz", "La Paz"),
+  sexo = c("F", "M", "F", "M", "F", "M", "F", "F", "M", "F"),
+  nivel_edu = c("Universitario", "Secundario", "Universitario", "Primario",
+                "Universitario", "Secundario", "Primario", "Universitario",
+                "Secundario", "Universitario")
+)
+
+# Frecuencia simple
+encuestados |> tabyl(departamento)
+```
+
+```{r}
+# Tabla cruzada (departamento x sexo)
+encuestados |> tabyl(departamento, sexo)
+```
+
+```{r}
+# Con porcentajes usando adorn_*
+encuestados |>
+  tabyl(departamento) |>
+  adorn_pct_formatting(digits = 1)
+```
+
+## `remove_empty()`: eliminar filas y columnas vacías
+
+Muy útil al importar Excel con filas/columnas de formato vacías:
+
+```{r}
+datos_con_vacios <- tibble(
+  nombre = c("Ana", NA, "Carlos", NA),
+  edad = c(28, NA, 34, NA),
+  ciudad = c("La Paz", NA, "Oruro", NA)
+)
+
+datos_con_vacios |> remove_empty("rows")
+```
+
+## `get_dupes()`: encontrar duplicados
+
+```{r}
+datos_duplicados <- tibble(
+  id = c(1, 2, 3, 2, 4),
+  nombre = c("Ana", "Carlos", "Rosa", "Carlos", "Pedro")
+)
+
+datos_duplicados |> get_dupes(id)
+```
+
+## Ejercicio
+
+Crea un tibble con nombres de columnas "sucios" (con espacios y mayúsculas), algunas filas vacías y un duplicado. Luego aplica `clean_names()`, `remove_empty()` y `get_dupes()` para dejarlo limpio.

@@ -13,28 +13,28 @@ Por ejemplo, si queremos extraer la mediana de la esperanza de vida:
 
 ```{r}
 # Calcular mediana de la esperanza de vida
-data %>%
+data |>
   summarize(mediana_esp_vida = median(lifeExp))
 ```
 Podemos combinarlo con `filter()` y calcular varios resumenes:
 
 ```{r}
 # Resumir
-data %>%
-  filter(year == 1952) %>%
+data |>
+  filter(year == 1952) |>
   summarize(mediana_esp_1952 = median(lifeExp), media_pib_1952 = mean(gdpPercap))
 ```
 Ahora bien para calcular nuevas columnas y agregarlas al data frame, usaremos `mutate()`. Por ejemplo, calculando la esperanza de vida en meses:
 
 ```{r}
-data %>%
+data |>
   mutate(lifeExpMes = lifeExp * 12)
 ```
 
 También podemos agregar varias columnas al mismo tiempo. Y si queremos que los cambios se guarden en la tabla original, la debemos sobreescribir:
 
 ```{r}
-data <- data %>%
+data <- data |>
   mutate(lifeExpMes = lifeExp * 12, popMillon = pop / 1000000)
 data
 ```

@@ -1,0 +1,92 @@
+---
+title: "Fechas y tiempos con lubridate"
+output:
+  github_document:
+    html_preview: false
+---
+
+Las fechas son uno de los tipos de datos más comunes en ciencias sociales (encuestas, registros, series de tiempo) y también uno de los más incómodos de manejar. El paquete `lubridate` (parte de `tidyverse`) simplifica enormemente el trabajo con fechas y horas.
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+## Crear fechas
+
+```{r}
+# Desde texto con distintos formatos
+ymd("2025-03-15")         # año-mes-día
+dmy("15/03/2025")         # día/mes/año (formato boliviano/latinoamericano)
+mdy("March 15, 2025")     # mes día, año (formato anglosajón)
+
+# Con hora incluida
+ymd_hms("2025-03-15 14:30:00")
+```
+
+## Extraer componentes de una fecha
+
+```{r}
+fecha <- ymd("2025-03-15")
+
+year(fecha)    # año
+month(fecha)   # mes como número
+month(fecha, label = TRUE)  # mes como texto abreviado
+day(fecha)     # día
+wday(fecha, label = TRUE)   # día de la semana
+```
+
+## Operar con fechas
+
+```{r}
+hoy <- today()
+hoy
+
+# Sumar o restar períodos
+hoy + days(10)       # 10 días después
+hoy - months(3)      # 3 meses antes
+hoy + years(1)       # 1 año después
+
+# Diferencia entre fechas
+inicio_curso <- ymd("2025-03-01")
+fin_curso    <- ymd("2025-05-31")
+
+as.numeric(fin_curso - inicio_curso)        # diferencia en días
+interval(inicio_curso, fin_curso) / weeks() # diferencia en semanas
+```
+
+## Fechas en un data frame
+
+Imaginemos registros de encuestas con fechas:
+
+```{r}
+encuestas <- tibble(
+  id = 1:6,
+  fecha_encuesta = dmy(c("10/01/2025", "22/01/2025", "05/02/2025",
+                          "18/02/2025", "03/03/2025", "17/03/2025")),
+  satisfaccion = c(4, 3, 5, 2, 4, 5)
+)
+
+encuestas
+```
+
+Con lubridate podemos extraer componentes y agrupar:
+
+```{r}
+encuestas |>
+  mutate(
+    mes = month(fecha_encuesta, label = TRUE),
+    semana = week(fecha_encuesta)
+  ) |>
+  group_by(mes) |>
+  summarize(
+    n_encuestas = n(),
+    satisfaccion_promedio = mean(satisfaccion)
+  )
+```
+
+## Ejercicio
+
+Crea un tibble con 5 registros de eventos importantes de Bolivia (inventa las fechas). Luego:
+1. Extrae el año, mes y día de la semana de cada fecha
+2. Calcula cuántos días han pasado desde cada evento hasta hoy (`today()`)

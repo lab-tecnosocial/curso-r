@@ -1,0 +1,53 @@
+---
+title: "Solución: Media y desviación estandar"
+output:
+  github_document:
+    html_preview: false
+---
+
+## Soluciones
+
+Existen varias formas de resolver estos ejercicios. Aquí van algunas:
+
+```{r}
+# Media con asignaciones de variables intermedias
+mi_media1 <- function(x) {
+  suma <- sum(x)
+  n <- length(x)
+  suma / n
+}
+
+# Media con funciones anidadas (versión compacta)
+mi_media2 <- function(x) {
+  sum(x) / length(x)
+}
+
+# Uso y comprobación
+datos_ejemplo <- c(10, 20, 30, 40, 50)
+mi_media1(datos_ejemplo)
+mi_media2(datos_ejemplo)
+mean(datos_ejemplo) # comparamos con la función nativa de R
+```
+
+```{r}
+# Desviación estandar con asignaciones de variables intermedias
+desv_estandar1 <- function(x) {
+  media <- mean(x)
+  n <- length(x)
+  desviaciones <- x - media
+  cuadrados <- desviaciones ^ 2
+  suma <- sum(cuadrados)
+  division <- suma / (n - 1)
+  sqrt(division)
+}
+
+# Desviación estandar con funciones anidadas (versión compacta)
+desv_estandar2 <- function(x) {
+  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
+}
+
+# Uso y comprobación
+desv_estandar1(datos_ejemplo)
+desv_estandar2(datos_ejemplo)
+sd(datos_ejemplo) # comparamos con la función nativa de R
+```

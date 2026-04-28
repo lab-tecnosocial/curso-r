@@ -34,26 +34,26 @@ Si quisieramos filtrar solo el pais de Bolivia, entonces:
 
 ```{r}
 # Filtrar pais de Bolivia
-data %>%
+data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 ```{r}
 # Filtrar pais de Bolivia y cuándo tuvieron una esperanza de vida menor de 50 años
-data %>%
+data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 Adicionalmente podemos usar la función `arrange()` para ordenar la tabla por un criterio de ascendente o descendente y usando alguna columna:
 
 ```{r}
 # Ordenar: arrange() (menor a mayor); mayor a menor con desc()
-data %>%
-  filter(country == "Bolivia", lifeExp < 50) %>%
+data |>
+  filter(country == "Bolivia", lifeExp < 50) |>
   arrange(desc(gdpPercap))
 ```
 Los anteriores procedimientos solo muestran el resultado, pero no lo guardan. Para guardar explicitamente debemos asignar el resultado a una variable, con lo cual podemos trabajar solo con ese subconjunto. Por ejemplo:
 
 ```{r}
-bolivia <- data %>%
+bolivia <- data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 
@@ -61,15 +61,15 @@ bolivia <- data %>%
 Ahora bien para seleccionar columnas usamos `select()` y le pasamos una o más columnas
 
 ```{r}
-bolivia %>%
+bolivia |>
   select(year, pop)
 ```
 Naturalmente podemos combinar `filter()` con `select()` y `arrange()`:
 
 ```{r}
-data %>%
-  select(country, year, gdpPercap) %>%
-  filter(country == "Bolivia") %>%
+data |>
+  select(country, year, gdpPercap) |>
+  filter(country == "Bolivia") |>
   arrange(desc(gdpPercap))
 ```
 

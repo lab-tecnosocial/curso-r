@@ -1,0 +1,94 @@
+---
+title: "Manipulación de texto con stringr"
+output:
+  github_document:
+    html_preview: false
+---
+
+El paquete `stringr` (parte de `tidyverse`) provee funciones consistentes para trabajar con texto (cadenas de caracteres). Todas sus funciones empiezan con `str_`, lo que las hace fáciles de recordar.
+
+```{r}
+library(tidyverse)
+
+# Usaremos el dataset de departamentos de Bolivia
+deptos <- read_csv("../data/bolivia-departamentos.csv")
+deptos
+```
+
+## Detectar patrones: `str_detect()`
+
+Devuelve `TRUE` o `FALSE` según si el texto contiene un patrón. Es muy útil combinado con `filter()`:
+
+```{r}
+# ¿Qué capitales contienen "la" o "La"?
+str_detect(deptos$capital, "La")
+
+# Filtrar departamentos cuya capital contiene "a"
+deptos |>
+  filter(str_detect(capital, "a"))
+```
+
+## Convertir mayúsculas/minúsculas
+
+```{r}
+str_to_upper(deptos$departamento)   # TODO EN MAYUSCULAS
+str_to_lower(deptos$departamento)   # todo en minusculas
+str_to_title("santa cruz de la sierra")  # Primera Letra De Cada Palabra
+```
+
+## Reemplazar texto: `str_replace()`
+
+```{r}
+# Reemplazar solo la primera ocurrencia
+str_replace(deptos$capital, "a", "A")
+
+# Reemplazar todas las ocurrencias
+str_replace_all(deptos$capital, "a", "A")
+```
+
+## Extraer texto: `str_extract()`
+
+```{r}
+ciudades <- c("La Paz (3640 m)", "Cochabamba (2558 m)", "Santa Cruz (416 m)")
+
+# Extraer solo el número de altitud
+str_extract(ciudades, "\\d+")
+```
+
+## Contar caracteres: `str_length()` y `str_count()`
+
+```{r}
+# Longitud de cada nombre de departamento
+str_length(deptos$departamento)
+
+# Cuántas veces aparece la letra "a" en cada nombre
+str_count(deptos$departamento, "a")
+```
+
+## Combinar con `mutate()`
+
+`stringr` brilla cuando se usa dentro de un pipeline de `dplyr`:
+
+```{r}
+deptos |>
+  mutate(
+    departamento_upper = str_to_upper(departamento),
+    capital_corta = str_length(capital),
+    region_limpia = str_replace(region, "Occidente", "Oeste")
+  ) |>
+  select(departamento_upper, capital_corta, region_limpia)
+```
+
+## `str_c()`: pegar cadenas de texto
+
+Similar a `paste()` pero del ecosistema tidyverse:
+
+```{r}
+str_c(deptos$departamento, deptos$capital, sep = " - capital: ")
+```
+
+## Ejercicio
+
+Usando `deptos` y funciones de `stringr`:
+1. Filtra los departamentos cuya región contiene la letra "e"
+2. Crea una nueva columna `descripcion` que diga `"[Departamento]: [capital] ([altitud_capital_m] msnm)"` usando `str_c()` o `paste()`

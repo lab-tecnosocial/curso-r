@@ -13,8 +13,8 @@ Podemos generar muchos tipos de gráficos con el paquete `ggplot`. Este genera g
 
 ```{r}
 # Graficar en PIB per capita con esperanza de vida en una gráfico de puntos
-data %>%
-  filter(year == 1952) %>%
+data |>
+  filter(year == 1952) |>
   ggplot(aes(x = gdpPercap, y = lifeExp)) +
   geom_point() +
   scale_x_log10() # para que los puntos no se vea tan ajustados
@@ -25,8 +25,8 @@ data %>%
 ```{r}
 # Graficos de barras: geom_bar() y geom_col()
 # Número de paises en cada continente
-data %>%
-  filter(year == 2007) %>%
+data |>
+  filter(year == 2007) |>
   ggplot(aes(x = continent)) +
   geom_bar()
 ```
@@ -36,10 +36,10 @@ data %>%
 ```{r}
 # Histogramas con geom_histogram()
 # Distribución de población en el año de 1952
-data_1952 <- data %>%
+data_1952 <- data |>
   filter(year == 1952)
  
-data_1952 %>%
+data_1952 |>
   ggplot(aes(pop)) +
   geom_histogram() +
   scale_x_log10()
@@ -50,11 +50,11 @@ data_1952 %>%
 
 ```{r}
 # Graficos de lineas: geom_line()
-grupos <- data %>%
-  group_by(continent, year) %>%
+grupos <- data |>
+  group_by(continent, year) |>
   summarize(mediana_esp = median(lifeExp))
 
-grupos %>%
+grupos |>
   ggplot(aes(x = year, y = mediana_esp, color = continent)) +
   geom_line()
 ```
@@ -65,7 +65,7 @@ grupos %>%
 ```{r}
 # Diagrama con geom_boxplot()
 # Distribución de gdpPercap entre los continentes
-data_1952 %>%
+data_1952 |>
   ggplot(aes(x = continent, y = gdpPercap)) +
   geom_boxplot() +
   scale_y_log10()
@@ -77,12 +77,12 @@ Es posible también crear una suerte de matriz de datos con los facetados (`face
 
 ```{r}
 # Facetados o matrices de gráficos
-data %>%
+data |>
   ggplot(aes(x = gdpPercap, y = lifeExp, color = continent, size = pop)) +
   geom_point() +
   scale_x_log10() +
   facet_wrap(~year)
 ```
 
-[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control)   |   [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-tweets)
+[<< Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control)   |   [Siguiente >>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-texto)
 

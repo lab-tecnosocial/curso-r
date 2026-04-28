@@ -1,14 +1,15 @@
 ---
 title: "Ejercicio: Media y desviación estandar"
-output: 
+output:
   github_document:
     html_preview: false
 ---
+
 ## Problemas
 
 Ahora que conoces sobre variables, funciones y vectores puedes realizar los dos siguientes retos.
 
-**Problema 1.** Define una función que devuelve la media de cualquier vector numérico, según la siguiente formula: 
+**Problema 1.** Define una función que devuelve la media de cualquier vector numérico, según la siguiente formula:
 $$\bar{x} = \frac1n \sum_{i=1}^n x_i$$
 Donde:
 
@@ -34,53 +35,8 @@ En terminos simples, la fórmula solo dice:
 - Dividirla entre la cantidad de datos menos uno
 - Finalmente, extraer su raiz cuadrada
 
-> Tip: ten en mente todas las funciones que necesitaras para tu propia función, incluyendo sumatoria, longitud de vectores, operador de potencias. Y necesitarás averiguar la función que sirva para extraer raices cuadradas
+> Tip: ten en mente todas las funciones que necesitarás para tu propia función, incluyendo sumatoria, longitud de vectores, operador de potencias. Y necesitarás averiguar la función que sirva para extraer raíces cuadradas.
 
-## Soluciones
+Cuando termines, comprueba que tu función da el mismo resultado que las funciones nativas de R: `mean()` y `sd()`.
 
-Existen varias formas de resolver estos ejercicios. Aquí van algunas:
-
-```{r}
-# Media con asignaciones de variables intermedias
-mi_media1 <- function(x) {
-  suma <- sum(x)
-  n <- length(x)
-  suma / n      # también podría haber sido : return(suma / n)
-}
-
-# Media con funciones anidadas
-mi_media2 <- function(x){
-  sum(x) / length(x)
-}
-
-# Uso
-datos_ejemplo <- c(10, 20, 30, 40, 50)
-mi_media1(datos_ejemplo)
-mi_media2(datos_ejemplo)
-mean(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
-```
-
-```{r}
-# Desviación estandar con asignaciones de variables intermedias
-desv_estandar2 <- function(x){
-  media <- mean(x)
-  n <- length(x) 
-  desviaciones <- x - media
-  cuadrados <- desviaciones ^ 2
-  suma <- sum(cuadrados)
-  division <- suma / (n - 1)
-  resultado <- sqrt(division)
-  resultado
-}
-
-# Desviación estandar con funciones anidadas
-desv_estandar1 <- function(x){
-  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
-}
-
-# Uso
-desv_estandar1(datos_ejemplo)
-desv_estandar2(datos_ejemplo)
-sd(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
-```
-
+Las soluciones están en el archivo [`033-ej-media-desviacion-solucion.Rmd`](033-ej-media-desviacion-solucion.Rmd).
