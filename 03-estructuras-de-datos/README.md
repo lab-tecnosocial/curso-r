@@ -369,82 +369,16 @@ elemento - Sumar los resultados de los elementos anteriores - Dividirla
 entre la cantidad de datos menos uno - Finalmente, extraer su raiz
 cuadrada
 
-> Tip: ten en mente todas las funciones que necesitaras para tu propia
+> Tip: ten en mente todas las funciones que necesitarás para tu propia
 > función, incluyendo sumatoria, longitud de vectores, operador de
 > potencias. Y necesitarás averiguar la función que sirva para extraer
-> raices cuadradas
+> raíces cuadradas.
 
-## Soluciones
+Cuando termines, comprueba que tu función da el mismo resultado que las
+funciones nativas de R: `mean()` y `sd()`.
 
-Existen varias formas de resolver estos ejercicios. Aquí van algunas:
-
-``` r
-# Media con asignaciones de variables intermedias
-mi_media1 <- function(x) {
-  suma <- sum(x)
-  n <- length(x)
-  suma / n      # también podría haber sido : return(suma / n)
-}
-
-# Media con funciones anidadas
-mi_media2 <- function(x){
-  sum(x) / length(x)
-}
-
-# Uso
-datos_ejemplo <- c(10, 20, 30, 40, 50)
-mi_media1(datos_ejemplo)
-```
-
-    ## [1] 30
-
-``` r
-mi_media2(datos_ejemplo)
-```
-
-    ## [1] 30
-
-``` r
-mean(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
-```
-
-    ## [1] 30
-
-``` r
-# Desviación estandar con asignaciones de variables intermedias
-desv_estandar2 <- function(x){
-  media <- mean(x)
-  n <- length(x) 
-  desviaciones <- x - media
-  cuadrados <- desviaciones ^ 2
-  suma <- sum(cuadrados)
-  division <- suma / (n - 1)
-  resultado <- sqrt(division)
-  resultado
-}
-
-# Desviación estandar con funciones anidadas
-desv_estandar1 <- function(x){
-  sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
-}
-
-# Uso
-desv_estandar1(datos_ejemplo)
-```
-
-    ## [1] 15.81139
-
-``` r
-desv_estandar2(datos_ejemplo)
-```
-
-    ## [1] 15.81139
-
-``` r
-sd(datos_ejemplo) # comparamos el resultado con la funcion nativa de R
-```
-
-    ## [1] 15.81139
+Las soluciones están en el archivo
+[`033-ej-media-desviacion-solucion.Rmd`](033-ej-media-desviacion-solucion.Rmd).
 
 # Factores
 
@@ -686,7 +620,7 @@ archivos, donde las carpetas se separan con un `/` y al último se
 encuentran los nombres de archivos generalmente con una extensión de su
 tipo de archivo.
 
-Si estas en un proyecto de RStudio, que no es más que una carpeta,
+Si estás en un proyecto de Posit RStudio, que no es más que una carpeta,
 entonces mueve tus archivos de datos a tu carpeta para un acceso más
 directo:
 

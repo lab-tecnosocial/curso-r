@@ -31,10 +31,9 @@ un ecosistema de paquetes y comunidades de usuarios que extienden la
 funcionalidad de R. En el futuro tú mismo puedes contribuir con tus
 propios paquetes.
 
-Daremos dos ejemplos de uso de paquetes. Primero con `tidyverse` para
-hacer transformación, análisis y visualizaciones de datos con funciones
-modernas y legibles, y luego con el paquete `rtweet` para recolectar
-datos de Twitter.
+Daremos varios ejemplos de uso de paquetes. Primero con `tidyverse`
+para hacer transformación, análisis y visualizaciones de datos con
+funciones modernas y legibles.
 
 ## Tidyverse
 
@@ -80,43 +79,36 @@ principios:
 
 -   en los procedimientos, en vez de usar variables intermedias o el
     anidamiento de funciones, se privilegia el uso de una secuencia
-    apoyada en “tuberias” (*pipes*) que se representan con el símbolo
-    `%>%` y que hace que los datos fluyan de arriba hacía abajo
+    apoyada en “tuberías” (*pipes*) que se representan con el símbolo
+    `|>` y que hace que los datos fluyan de arriba hacía abajo
 -   se usan verbos de acción en sus funciones, que se pueden encadenar
     con los “pipes”
 
-Por ejemplo, podemos reescribir la función aninada de la desviación
-estandar que escribimos anteriormente a la siguiente forma:
+> **Nota histórica:** Antes de R 4.1 (2021), se usaba el pipe `%>%` del
+> paquete `magrittr`. Hoy R incluye el pipe `|>` de forma nativa, sin
+> necesidad de instalar nada extra. Si ves `%>%` en tutoriales o código
+> antiguo, funciona igual.
+
+Por ejemplo, comparemos cómo se escribe el mismo análisis con y sin pipes:
 
 ``` r
-library(tidyverse) # cargamos el paquete
-library(magrittr)
+library(tidyverse)
 
-# Datos de ejemplo
-x <- c(10, 20, 30, 40)
+data <- read_csv(“../data/gapminder.csv”)
 
-# Con anidamiento de funciones
-sqrt(sum((x - mean(x)) ^ 2) / (length(x) - 1))
+# Sin pipes: funciones anidadas, difícil de leer de izquierda a derecha
+arrange(filter(data, continent == “Americas”), desc(lifeExp))
+
+# Con el pipe nativo |>: las operaciones van de arriba hacia abajo
+data |>
+  filter(continent == “Americas”) |>
+  arrange(desc(lifeExp))
 ```
-
-    ## [1] 12.90994
-
-``` r
-# Con pipes
-x %>%
-  subtract(mean(x)) %>%
-  raise_to_power(2) %>%
-  sum() %>%
-  divide_by(length(x) - 1) %>%
-  sqrt()
-```
-
-    ## [1] 12.90994
 
 En el anidamiento de funciones las operaciones van de adentro hacía
-afuera, que es algo dificil de seguir para los humanos. En la versión
-con pipes, la operaciones van de arriba hacía abajo y son más fáciles de
-seguir, pero es necesario usar el operador del pipe para pasar el
+afuera, que es algo difícil de seguir para los humanos. En la versión
+con pipes, las operaciones van de arriba hacía abajo y son más fáciles
+de leer, pero es necesario usar el operador del pipe para pasar el
 resultado del paso previo al siguiente.
 
 # Filtrar y seleccionar
@@ -183,7 +175,7 @@ Si quisieramos filtrar solo el pais de Bolivia, entonces:
 
 ``` r
 # Filtrar pais de Bolivia
-data %>%
+data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 
@@ -198,7 +190,7 @@ data %>%
 
 ``` r
 # Filtrar pais de Bolivia y cuándo tuvieron una esperanza de vida menor de 50 años
-data %>%
+data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 
@@ -216,8 +208,8 @@ por un criterio de ascendente o descendente y usando alguna columna:
 
 ``` r
 # Ordenar: arrange() (menor a mayor); mayor a menor con desc()
-data %>%
-  filter(country == "Bolivia", lifeExp < 50) %>%
+data |>
+  filter(country == "Bolivia", lifeExp < 50) |>
   arrange(desc(gdpPercap))
 ```
 
@@ -236,7 +228,7 @@ variable, con lo cual podemos trabajar solo con ese subconjunto. Por
 ejemplo:
 
 ``` r
-bolivia <- data %>%
+bolivia <- data |>
   filter(country == "Bolivia", lifeExp < 50)
 ```
 
@@ -244,7 +236,7 @@ Ahora bien para seleccionar columnas usamos `select()` y le pasamos una
 o más columnas
 
 ``` r
-bolivia %>%
+bolivia |>
   select(year, pop)
 ```
 
@@ -260,9 +252,9 @@ bolivia %>%
 Naturalmente podemos combinar `filter()` con `select()` y `arrange()`:
 
 ``` r
-data %>%
-  select(country, year, gdpPercap) %>%
-  filter(country == "Bolivia") %>%
+data |>
+  select(country, year, gdpPercap) |>
+  filter(country == "Bolivia") |>
   arrange(desc(gdpPercap))
 ```
 
@@ -299,7 +291,7 @@ Por ejemplo, si queremos extraer la mediana de la esperanza de vida:
 
 ``` r
 # Calcular mediana de la esperanza de vida
-data %>%
+data |>
   summarize(mediana_esp_vida = median(lifeExp))
 ```
 
@@ -312,8 +304,8 @@ Podemos combinarlo con `filter()` y calcular varios resumenes:
 
 ``` r
 # Resumir
-data %>%
-  filter(year == 1952) %>%
+data |>
+  filter(year == 1952) |>
   summarize(mediana_esp_1952 = median(lifeExp), media_pib_1952 = mean(gdpPercap))
 ```
 
@@ -327,7 +319,7 @@ usaremos `mutate()`. Por ejemplo, calculando la esperanza de vida en
 meses:
 
 ``` r
-data %>%
+data |>
   mutate(lifeExpMes = lifeExp * 12)
 ```
 
@@ -352,7 +344,7 @@ que los cambios se guarden en la tabla original, la debemos
 sobreescribir:
 
 ``` r
-data <- data %>%
+data <- data |>
   mutate(lifeExpMes = lifeExp * 12, popMillon = pop / 1000000)
 data
 ```
@@ -384,8 +376,8 @@ Por ejemplo, podemos agrupar por continente y recién extraer un calculo
 de la mediana:
 
 ``` r
-data %>%
-  group_by(continent) %>%
+data |>
+  group_by(continent) |>
   summarize(mediana_esp = median(lifeExp))
 ```
 
@@ -402,8 +394,8 @@ O agrupar por una combinación de variables, como continente y año, y que
 nos permite comparar con más valores:
 
 ``` r
-data %>%
-  group_by(continent, year) %>%
+data |>
+  group_by(continent, year) |>
   summarize(mediana_esp = median(lifeExp))
 ```
 
@@ -440,8 +432,8 @@ entre otras.
 
 ``` r
 # Graficar en PIB per capita con esperanza de vida en una gráfico de puntos
-data %>%
-  filter(year == 1952) %>%
+data |>
+  filter(year == 1952) |>
   ggplot(aes(x = gdpPercap, y = lifeExp)) +
   geom_point() +
   scale_x_log10() # para que los puntos no se vea tan ajustados
@@ -454,8 +446,8 @@ data %>%
 ``` r
 # Graficos de barras: geom_bar() y geom_col()
 # Número de paises en cada continente
-data %>%
-  filter(year == 2007) %>%
+data |>
+  filter(year == 2007) |>
   ggplot(aes(x = continent)) +
   geom_bar()
 ```
@@ -467,10 +459,10 @@ data %>%
 ``` r
 # Histogramas con geom_histogram()
 # Distribución de población en el año de 1952
-data_1952 <- data %>%
+data_1952 <- data |>
   filter(year == 1952)
  
-data_1952 %>%
+data_1952 |>
   ggplot(aes(pop)) +
   geom_histogram() +
   scale_x_log10()
@@ -485,8 +477,8 @@ data_1952 %>%
 
 ``` r
 # Graficos de lineas: geom_line()
-grupos <- data %>%
-  group_by(continent, year) %>%
+grupos <- data |>
+  group_by(continent, year) |>
   summarize(mediana_esp = median(lifeExp))
 ```
 
@@ -494,7 +486,7 @@ grupos <- data %>%
     ## override using the `.groups` argument.
 
 ``` r
-grupos %>%
+grupos |>
   ggplot(aes(x = year, y = mediana_esp, color = continent)) +
   geom_line()
 ```
@@ -506,7 +498,7 @@ grupos %>%
 ``` r
 # Diagrama con geom_boxplot()
 # Distribución de gdpPercap entre los continentes
-data_1952 %>%
+data_1952 |>
   ggplot(aes(x = continent, y = gdpPercap)) +
   geom_boxplot() +
   scale_y_log10()
@@ -521,7 +513,7 @@ Es posible también crear una suerte de matriz de datos con los facetados
 
 ``` r
 # Facetados o matrices de gráficos
-data %>%
+data |>
   ggplot(aes(x = gdpPercap, y = lifeExp, color = continent, size = pop)) +
   geom_point() +
   scale_x_log10() +
@@ -533,4 +525,4 @@ data %>%
 [\<\<
 Anterior](https://github.com/lab-tecnosocial/curso-r/tree/main/04-estructuras-de-control)
 \| [Siguiente
-\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-tweets)
+\>\>](https://github.com/lab-tecnosocial/curso-r/tree/main/06-analisis-de-texto)

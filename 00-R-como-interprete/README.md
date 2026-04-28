@@ -10,13 +10,17 @@ ese lenguaje a operaciones computacionales útiles sobre datos.
 ![](../pizarras/drawings/comunicacion-con-R.png) Es decir que para
 comunicarte con R debes escribir en “código”.
 
-## Instalar R y RStudio
+## Instalar R y Posit RStudio
 
 -   R, que es el software base: <https://cloud.r-project.org/>
--   RStudio, que es el editor de código:
-    <https://www.rstudio.com/products/rstudio/download/>
+-   Posit RStudio, que es el editor de código:
+    <https://posit.co/download/rstudio-desktop/>
 
-RStudio tiene las siguientes partes principales:
+> Nota: En 2022 RStudio cambió de nombre a **Posit RStudio**. Si buscas
+> tutoriales o documentación antigua verás el nombre "RStudio" — es el
+> mismo programa.
+
+Posit RStudio tiene las siguientes partes principales:
 
 ![](../pizarras/drawings/rstudio.png)
 
@@ -33,14 +37,14 @@ RStudio tiene las siguientes partes principales:
     nuestro proyecto y los gráficos, entre otros.
 
 Siempre que trabajemos con R es clave que creemos “Proyectos” en
-RStudio:
+Posit RStudio:
 
 -   Un “Proyecto” no es más que una carpeta donde podemos crear varios
     archivos de R, datos, documentación y guardar salidas, que además
     facilita que sean accesibles para nuestros programas en R.
 -   Para crearlo ve a: File \> New Project, escoge un directorio y dale
     un nombre
--   Una vez creado el proyecto, el punto de partida es crear tú primer
+-   Una vez creado el proyecto, el punto de partida es crear tu primer
     archivo de R. Para ello: File \> New File \> R Script
 -   En un R Script ya puedes escribir código en R
 
